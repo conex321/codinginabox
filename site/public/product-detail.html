@@ -31,7 +31,14 @@
 .holographic-shim::after { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: linear-gradient(45deg, transparent 0%, rgba(0,240,255,0.1) 45%, rgba(255,0,229,0.1) 50%, rgba(0,240,255,0.1) 55%, transparent 100%); transform: rotate(25deg); pointer-events: none; }
 .mono-font { font-family: 'JetBrains Mono', monospace; }
 .circuit-overlay { background-image: radial-gradient(var(--neon-cyan) 0.5px, transparent 0.5px); background-size: 20px 20px; opacity: 0.15; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(5,11,26,0.98); backdrop-filter: blur(24px); border: 1px solid var(--neon-cyan); border-top: 2px solid var(--neon-cyan); box-shadow: 0 8px 30px rgba(0,240,255,0.2); padding: 8px 0; z-index: 100; }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
+        .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
 </style>
+    <link rel="stylesheet" href="mobile.css" />
+    <script src="mobile-nav.js" defer></script>
 </head>
 
 <body class="font-['Inter',sans-serif]">
@@ -44,9 +51,22 @@
             <div class="hidden md:flex items-center gap-8">
                 <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="index.html">Home</a>
-                <a class="text-sm font-medium text-[var(--neon-cyan)]" href="products.html">Kits</a>
+                <div class="nav-dropdown">
+                    <a class="text-sm font-medium text-[var(--neon-cyan)]" href="products.html">Kits</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="products/robot-car.html">Robot Car V4</a>
+                        <a href="products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
+                        <a href="products/laser-shooting-target.html">Laser Shooting Target</a>
+                        <a href="products/smart-water-dispenser.html">Smart Water Dispenser</a>
+                        <a href="products/solar-light-tracker.html">Solar Light Tracker</a>
+                        <a href="products/robot-arm.html">Titan Arm 6-Axis</a>
+                        <a href="products/mini-drone.html">Mini Drone X-2</a>
+                    </div>
+                </div>
                 <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="courses.html">Courses</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="competitions.html">Competitions</a>
                 <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="about.html">About</a>
                 <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
@@ -397,6 +417,7 @@
             <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
         </div>
     </footer>
+    <script src="translations.js"></script>
 </body>
 
 </html>

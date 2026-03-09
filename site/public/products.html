@@ -111,27 +111,63 @@
                 transform: translateY(-4px);
             }
         }
-        .nav-dropdown { position: relative; }
-        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(5,11,26,0.98); backdrop-filter: blur(24px); border: 1px solid var(--neon-cyan); border-top: 2px solid var(--neon-cyan); box-shadow: 0 8px 30px rgba(0,240,255,0.2); padding: 8px 0; z-index: 100; }
-        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-        .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
-        .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 220px;
+            background: rgba(5, 11, 26, 0.98);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--neon-cyan);
+            border-top: 2px solid var(--neon-cyan);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.2);
+            padding: 8px 0;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 8px 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+
+        .nav-dropdown-menu a:hover {
+            color: var(--neon-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            padding-left: 24px;
+        }
     </style>
+    <link rel="stylesheet" href="mobile.css" />
+    <script src="mobile-nav.js" defer></script>
 </head>
 
 <body class="bg-navy-space font-display text-white selection:bg-cyan-neon selection:text-navy-space">
-    <nav class="fixed top-0 w-full z-50 bg-navy-space/95 backdrop-blur-xl border-b-2 border-cyan-neon/60"
-        style="box-shadow: 0 4px 30px rgba(0, 240, 255, 0.15), 0 1px 0 rgba(0, 240, 255, 0.3)">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-10">
-                <div class="flex items-center gap-2">
-                    <img src="logo.svg" alt="CodingInABox" class="h-14 w-auto" />
-                </div>
-                <div class="hidden md:flex items-center gap-8">
-                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
-                        href="index.html">Home</a>
-                    <div class="nav-dropdown">
-                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="products.html">Kits</a>
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="index.html">Home</a>
+                <div class="nav-dropdown">
+                    <a class="text-sm font-medium text-[var(--neon-cyan)]" href="products.html">Kits</a>
                     <div class="nav-dropdown-menu">
                         <a href="products/robot-car.html">Robot Car V4</a>
                         <a href="products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
@@ -142,23 +178,18 @@
                         <a href="products/mini-drone.html">Mini Drone X-2</a>
                     </div>
                 </div>
-                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
-                        href="courses.html">Courses</a>
-                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
-                        href="about.html">About</a>
-                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
-                        href="contact.html">Contact</a>
-                </div>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="courses.html">Courses</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="competitions.html">Competitions</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="about.html">About</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="contact.html">Contact</a>
             </div>
-            <div class="flex items-center gap-4">
-                <button class="p-2 text-cyan-neon/60 hover:text-cyan-neon">
-                    <span class="material-symbols-outlined">search</span>
-                </button>
-                <button
-                    class="border border-cyan-neon text-cyan-neon px-6 py-2 rounded-none font-bold text-xs tracking-widest uppercase hover:bg-cyan-neon hover:text-navy-space transition-all shadow-[inset_0_0_10px_#00F0FF33]">
-                    Access Portal
-                </button>
-            </div>
+            <a href="contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
+                Started</a>
         </div>
     </nav>
     <section class="relative pt-40 pb-32 px-6 overflow-hidden min-h-[500px] flex items-center justify-center">
@@ -662,6 +693,7 @@
         </div>
     </footer>
 
+    <script src="translations.js"></script>
 </body>
 
 </html>

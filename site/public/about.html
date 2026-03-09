@@ -107,20 +107,23 @@
         .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
         .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
     </style>
+    <link rel="stylesheet" href="mobile.css" />
+    <script src="mobile-nav.js" defer></script>
 </head>
 
 <body
     class="bg-deep-navy font-display text-slate-100 overflow-x-hidden selection:bg-neon-cyan selection:text-deep-navy">
-    <header class="fixed top-0 w-full z-50 glass-nav">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3 group">
+            <a href="index.html" class="flex items-center gap-2">
                 <img src="logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" />
-            </div>
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="text-xs uppercase font-bold font-mono tracking-widest text-slate-400 hover:text-neon-cyan transition-colors"
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="index.html">Home</a>
                 <div class="nav-dropdown">
-                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="products.html">Kits</a>
+                    <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                        href="products.html">Kits</a>
                     <div class="nav-dropdown-menu">
                         <a href="products/robot-car.html">Robot Car V4</a>
                         <a href="products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
@@ -131,19 +134,19 @@
                         <a href="products/mini-drone.html">Mini Drone X-2</a>
                     </div>
                 </div>
-                <a class="text-xs uppercase font-bold font-mono tracking-widest text-slate-400 hover:text-neon-cyan transition-colors"
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="courses.html">Courses</a>
-                <a class="text-xs uppercase font-bold font-mono tracking-widest text-neon-cyan"
-                    href="about.html">About</a>
-                <a class="text-xs uppercase font-bold font-mono tracking-widest text-slate-400 hover:text-neon-cyan transition-colors"
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="competitions.html">Competitions</a>
+                <a class="text-sm font-medium text-[var(--neon-cyan)]" href="about.html">About</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="contact.html">Contact</a>
-            </nav>
-            <button
-                class="border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 px-6 py-2 text-xs font-bold font-mono uppercase tracking-[0.2em] transition-all rounded-sm">
-                Access Portal
-            </button>
+            </div>
+            <a href="contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
+                Started</a>
         </div>
-    </header>
+    </nav>
     <section
         class="relative h-[65vh] flex items-center justify-center hero-clip overflow-hidden bg-deep-navy border-b border-neon-cyan">
         <div class="absolute inset-0 particle-grid opacity-30"></div>
@@ -177,14 +180,17 @@
                     <div
                         class="text-slate-400 space-y-6 text-lg font-light leading-relaxed border-l border-neon-cyan/20 pl-6">
                         <p>
-                            In <span class="text-neon-cyan font-mono">Feb 2026</span>, Matthew and Sam identified a
-                            critical system failure: while the world accelerated towards automation, practical STEM
+                            In <span class="text-neon-cyan font-mono">Feb 2026</span>, a team of engineers and educators
+                            identified a critical system failure: while the world accelerated towards automation,
+                            practical STEM
                             tools remained locked behind barriers of cost and geography.
                         </p>
                         <p>
-                            What started as a rogue workshop in a garage evolved into a mission to <span
-                                class="text-white">containerize high-tech education</span>. We believe that robotics
-                            shouldn't be a luxury, but a core component of the modern operating system.
+                            What started as a passion project evolved into a mission to <span
+                                class="text-white">containerize high-tech education</span>. We've developed
+                            next-generation
+                            STEM kits for a variety of ages — because robotics shouldn't be a luxury, but a
+                            core component of the modern operating system.
                         </p>
                         <p class="font-mono text-sm text-neon-cyan/60 italic">
                             &gt; Today, we bridge the gap between theory and code.
@@ -247,54 +253,38 @@
                 <span class="text-neon-cyan font-mono font-bold tracking-[0.4em] text-xs uppercase">//
                     THE_ARCHITECTS</span>
                 <h2 class="text-4xl md:text-6xl font-black mt-4 text-white font-mono uppercase tracking-tighter">Meet
-                    the Founders</h2>
+                    the Team</h2>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 max-w-4xl mx-auto">
-                <div class="text-center group dark-glass p-8 rounded-lg shimmer-border border border-white/10">
-                    <div class="relative inline-block mb-8">
-                        <div
-                            class="absolute -inset-2 bg-gradient-to-tr from-neon-cyan to-neon-magenta rounded-full blur opacity-50 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div class="relative size-52 rounded-full border-2 border-white/20 p-1">
-                            <div
-                                class="w-full h-full rounded-full overflow-hidden border-4 border-neon-cyan shadow-[0_0_20px_rgba(0,240,255,0.5)] bg-void-black">
-                                <img alt="Matthew - CEO"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                                    src="assets/images/products/robot-arm.png" />
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div
+                    class="dark-glass p-10 border-t-2 border-neon-cyan group hover:bg-neon-cyan/5 transition-all text-center">
+                    <div
+                        class="size-16 rounded-full border border-neon-cyan flex items-center justify-center mb-8 mx-auto shadow-[0_0_15px_rgba(0,240,255,0.3)] group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-neon-cyan !text-3xl">engineering</span>
                     </div>
-                    <h3 class="text-3xl font-bold text-white font-mono">MATTHEW</h3>
-                    <p class="text-neon-cyan font-mono text-sm tracking-widest mt-2 uppercase">Chief Executive Officer
-                    </p>
-                    <div class="mt-4 flex justify-center gap-2 opacity-30">
-                        <span class="size-1 bg-neon-cyan"></span>
-                        <span class="size-1 bg-neon-cyan"></span>
-                        <span class="size-1 bg-neon-cyan"></span>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white font-mono uppercase tracking-tight">Engineers</h3>
+                    <p class="text-slate-400 leading-relaxed">Hardware and software engineers who design, prototype, and
+                        refine every kit to deliver a premium hands-on experience.</p>
                 </div>
-                <div class="text-center group dark-glass p-8 rounded-lg shimmer-border border border-white/10">
-                    <div class="relative inline-block mb-8">
-                        <div
-                            class="absolute -inset-2 bg-gradient-to-tr from-neon-magenta to-neon-cyan rounded-full blur opacity-50 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div class="relative size-52 rounded-full border-2 border-white/20 p-1">
-                            <div
-                                class="w-full h-full rounded-full overflow-hidden border-4 border-neon-magenta shadow-[0_0_20px_rgba(255,0,229,0.5)] bg-void-black">
-                                <img alt="Sam - CTO"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                                    src="assets/images/products/robot-arm.png" />
-                            </div>
-                        </div>
+                <div
+                    class="dark-glass p-10 border-t-2 border-neon-magenta group hover:bg-neon-magenta/5 transition-all text-center">
+                    <div
+                        class="size-16 rounded-full border border-neon-magenta flex items-center justify-center mb-8 mx-auto shadow-[0_0_15px_rgba(255,0,229,0.3)] group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-neon-magenta !text-3xl">school</span>
                     </div>
-                    <h3 class="text-3xl font-bold text-white font-mono">SAM</h3>
-                    <p class="text-neon-magenta font-mono text-sm tracking-widest mt-2 uppercase">Chief Technology
-                        Officer</p>
-                    <div class="mt-4 flex justify-center gap-2 opacity-30">
-                        <span class="size-1 bg-neon-magenta"></span>
-                        <span class="size-1 bg-neon-magenta"></span>
-                        <span class="size-1 bg-neon-magenta"></span>
+                    <h3 class="text-2xl font-bold mb-4 text-white font-mono uppercase tracking-tight">Educators</h3>
+                    <p class="text-slate-400 leading-relaxed">Curriculum designers and teachers who build
+                        age-appropriate lessons that make complex STEM concepts click for every learner.</p>
+                </div>
+                <div
+                    class="dark-glass p-10 border-t-2 border-neon-cyan group hover:bg-neon-cyan/5 transition-all text-center">
+                    <div
+                        class="size-16 rounded-full border border-neon-cyan flex items-center justify-center mb-8 mx-auto shadow-[0_0_15px_rgba(0,240,255,0.3)] group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-neon-cyan !text-3xl">diversity_3</span>
                     </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white font-mono uppercase tracking-tight">Innovators</h3>
+                    <p class="text-slate-400 leading-relaxed">A diverse team united by one goal — developing
+                        next-generation STEM kits for a variety of ages and skill levels worldwide.</p>
                 </div>
             </div>
         </div>
@@ -443,6 +433,7 @@
         </div>
     </footer>
 
+    <script src="translations.js"></script>
 </body>
 
 </html>

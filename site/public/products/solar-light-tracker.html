@@ -35,17 +35,21 @@
         .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
         .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
     </style>
+    <link rel="stylesheet" href="../mobile.css" />
+    <script src="../mobile-nav.js" defer></script>
 </head>
 
 <body class="font-['Inter',sans-serif]">
     <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
-        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between"><a href="../index.html"
-                class="flex items-center gap-2"><img src="../logo.svg" alt="CodingInABox"
-                    class="h-14 w-auto logo-animated" /></a>
-            <div class="hidden md:flex items-center gap-8"><a
-                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
-                    href="../index.html">Home</a><div class="nav-dropdown">
-                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="../products.html">Kits</a>
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../index.html">Home</a>
+                <div class="nav-dropdown">
+                    <a class="text-sm font-medium text-[var(--neon-cyan)]" href="../products.html">Kits</a>
                     <div class="nav-dropdown-menu">
                         <a href="../products/robot-car.html">Robot Car V4</a>
                         <a href="../products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
@@ -55,14 +59,18 @@
                         <a href="../products/robot-arm.html">Titan Arm 6-Axis</a>
                         <a href="../products/mini-drone.html">Mini Drone X-2</a>
                     </div>
-                </div><a
-                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
-                    href="../courses.html">Courses</a><a
-                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
-                    href="../about.html">About</a><a
-                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
-                    href="../contact.html">Contact</a></div><a href="../contact.html"
-                class="cta-cyber text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest">Get
+                </div>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../courses.html">Courses</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../competitions.html">Competitions</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../about.html">About</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../contact.html">Contact</a>
+            </div>
+            <a href="../contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
                 Started</a>
         </div>
     </nav>
@@ -71,7 +79,8 @@
         <div
             class="max-w-[1400px] mx-auto flex items-center gap-2 text-xs mono-font text-slate-500 uppercase tracking-widest">
             <a href="../products.html" class="hover:text-[var(--neon-cyan)] transition-colors">Kits_Arsenal</a><span
-                class="text-[var(--neon-cyan)]">›</span><span class="text-[var(--neon-cyan)]">Solar_Tracker</span></div>
+                class="text-[var(--neon-cyan)]">›</span><span class="text-[var(--neon-cyan)]">Solar_Tracker</span>
+        </div>
     </div>
 
     <section class="py-16 px-6 bg-[#050B1A]">
@@ -88,7 +97,8 @@
                     <div class="dark-glass rounded-sm p-2 cursor-pointer border-2 border-transparent hover:border-[var(--neon-cyan)]"
                         onclick="swapImage(this, '../assets/images/products/generated/solar-light-tracker-hero.png')">
                         <img class="w-full aspect-square object-cover rounded-sm opacity-70 hover:opacity-100 transition-opacity"
-                            src="../assets/images/products/generated/solar-light-tracker-hero.png" alt="Hero" /></div>
+                            src="../assets/images/products/generated/solar-light-tracker-hero.png" alt="Hero" />
+                    </div>
                     <div class="dark-glass rounded-sm p-2 cursor-pointer border-2 border-transparent hover:border-[var(--neon-cyan)]"
                         onclick="swapImage(this, '../assets/images/products/solar-light-tracker.png')"><img
                             class="w-full aspect-square object-cover rounded-sm opacity-70 hover:opacity-100 transition-opacity"
@@ -341,28 +351,32 @@
                 <div class="flex-1 text-center relative">
                     <div
                         class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
-                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">01</span></div>
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">01</span>
+                    </div>
                     <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Unbox & Sort</h3>
                     <p class="text-xs text-slate-400">Inspect solar panel, LDR sensors, and servos. ~20 min.</p>
                 </div>
                 <div class="flex-1 text-center relative">
                     <div
                         class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
-                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">02</span></div>
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">02</span>
+                    </div>
                     <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Build Frame</h3>
                     <p class="text-xs text-slate-400">Assemble base, mount servos and solar panel arm. ~2 hours.</p>
                 </div>
                 <div class="flex-1 text-center relative">
                     <div
                         class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-magenta)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(255,0,229,0.4)]">
-                        <span class="mono-font text-2xl font-bold text-[var(--neon-magenta)]">03</span></div>
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-magenta)]">03</span>
+                    </div>
                     <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Wire & Code</h3>
                     <p class="text-xs text-slate-400">Connect LDRs, program the tracking algorithm. ~2 hours.</p>
                 </div>
                 <div class="flex-1 text-center relative">
                     <div
                         class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-green)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(57,255,20,0.4)] animate-pulse">
-                        <span class="mono-font text-2xl font-bold text-[var(--neon-green)]">04</span></div>
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-green)]">04</span>
+                    </div>
                     <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Track the Sun!</h3>
                     <p class="text-xs text-slate-400">Take it outside and watch it follow the sun autonomously.</p>
                 </div>
@@ -545,6 +559,7 @@
         </div>
     </footer>
     <script>function swapImage(thumb, src) { document.getElementById('mainImage').src = src; document.querySelectorAll('.grid .dark-glass').forEach(el => { el.classList.remove('thumb-active'); el.classList.add('border-transparent'); }); thumb.classList.add('thumb-active'); thumb.classList.remove('border-transparent'); }</script>
+    <script src="../translations.js"></script>
 </body>
 
 </html>

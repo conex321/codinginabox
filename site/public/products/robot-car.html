@@ -38,6 +38,8 @@
         .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
         .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
     </style>
+    <link rel="stylesheet" href="../mobile.css" />
+    <script src="../mobile-nav.js" defer></script>
 </head>
 
 <body class="font-['Inter',sans-serif]">
@@ -45,13 +47,13 @@
     <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
             <a href="../index.html" class="flex items-center gap-2">
-                <img src="../logo.svg" alt="CodingInABox" class="h-14 w-auto logo-animated" />
+                <img src="../logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" />
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="../index.html">Home</a>
                 <div class="nav-dropdown">
-                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="../products.html">Kits</a>
+                    <a class="text-sm font-medium text-[var(--neon-cyan)]" href="../products.html">Kits</a>
                     <div class="nav-dropdown-menu">
                         <a href="../products/robot-car.html">Robot Car V4</a>
                         <a href="../products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
@@ -62,15 +64,17 @@
                         <a href="../products/mini-drone.html">Mini Drone X-2</a>
                     </div>
                 </div>
-                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="../courses.html">Courses</a>
-                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../competitions.html">Competitions</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="../about.html">About</a>
-                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="../contact.html">Contact</a>
             </div>
             <a href="../contact.html"
-                class="cta-cyber text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest">Get
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
                 Started</a>
         </div>
     </nav>
@@ -690,6 +694,7 @@
             thumb.classList.remove('border-transparent');
         }
     </script>
+    <script src="../translations.js"></script>
 </body>
 
 </html>

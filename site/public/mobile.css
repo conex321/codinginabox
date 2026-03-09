@@ -1,0 +1,353 @@
+/* ═══════════════════════════════════════════════════════
+   Mobile Responsiveness — CodingInABox
+   Shared CSS for hamburger nav + responsive overrides
+   ═══════════════════════════════════════════════════════ */
+
+/* ──── Hamburger Button ──── */
+#mobile-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  cursor: pointer;
+  z-index: 60;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+#mobile-hamburger:hover {
+  border-color: #00F0FF;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #00F0FF;
+  transition: all 0.3s ease;
+}
+
+#mobile-hamburger.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+#mobile-hamburger.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+#mobile-hamburger.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ──── Overlay ──── */
+#mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#mobile-overlay.open {
+  display: block;
+  opacity: 1;
+}
+
+/* ──── Slide-out Panel ──── */
+#mobile-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(5, 11, 26, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 2px solid #00F0FF;
+  box-shadow: -8px 0 40px rgba(0, 240, 255, 0.15);
+  z-index: 100;
+  overflow-y: auto;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+#mobile-panel.open {
+  right: 0;
+}
+
+.mobile-panel-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+#mobile-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #00F0FF;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#mobile-close:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: #00F0FF;
+}
+
+/* ──── Link List ──── */
+.mobile-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0;
+  flex: 1;
+}
+
+.mobile-link-list li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.mobile-nav-link,
+.mobile-accordion-toggle {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mobile-nav-link:hover,
+.mobile-accordion-toggle:hover {
+  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.05);
+  padding-left: 30px;
+}
+
+.accordion-arrow {
+  float: right;
+  color: #00F0FF;
+  transition: transform 0.2s ease;
+}
+
+/* ──── Sub-menu ──── */
+.mobile-sub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: rgba(0, 240, 255, 0.02);
+}
+
+.mobile-sub-list.open {
+  max-height: 500px;
+}
+
+.mobile-sub-link {
+  display: block;
+  padding: 12px 24px 12px 40px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: all 0.2s ease;
+}
+
+.mobile-sub-link:hover {
+  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.05);
+  padding-left: 46px;
+}
+
+.mobile-sub-link--parent {
+  color: #00F0FF;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+/* ──── Mobile CTA ──── */
+.mobile-cta-wrap {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+.mobile-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  background: linear-gradient(90deg, #00F0FF 0%, #A855F7 50%, #FF00E5 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.mobile-cta-btn:hover {
+  box-shadow: 0 0 25px rgba(255, 0, 229, 0.6);
+  transform: scale(1.02);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+  /* Show hamburger, hide desktop CTA in nav */
+  #mobile-hamburger {
+    display: flex;
+  }
+
+  /* Hide desktop nav CTA button on mobile (the one next to nav links) */
+  nav .cta-cyber,
+  header .cta-cyber,
+  nav button.cta-cyber,
+  nav a.cta-cyber,
+  header button[class*="border"][class*="neon-cyan"][class*="px-6"] {
+    display: none !important;
+  }
+
+  /* ── Hero Text Scaling ── */
+  .text-6xl { font-size: 2.25rem !important; line-height: 1.1 !important; }
+  .text-8xl { font-size: 2.75rem !important; line-height: 1.05 !important; }
+  .text-7xl { font-size: 2.5rem !important; line-height: 1.1 !important; }
+  .text-5xl { font-size: 1.875rem !important; line-height: 1.15 !important; }
+
+  /* ── Section Padding ── */
+  .py-24 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+  .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+  .py-16 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+  .mb-20 { margin-bottom: 2.5rem !important; }
+  .mb-16 { margin-bottom: 2rem !important; }
+
+  /* ── Stats Section ── */
+  .text-5xl.mono-font,
+  .text-5xl.font-mono,
+  [class*="text-5xl"][class*="mono"],
+  [class*="text-5xl"][class*="font-mono"] {
+    font-size: 2rem !important;
+  }
+
+  [class*="text-7xl"][class*="font-mono"] {
+    font-size: 2.25rem !important;
+  }
+
+  /* ── Trial Cards ── */
+  .h-\[450px\] { height: 320px !important; }
+  .h-\[65vh\] { height: auto !important; min-height: 60vh !important; }
+
+  /* ── Footer ── */
+  footer .grid-cols-2 { grid-template-columns: 1fr !important; }
+
+  /* ── Product Hero Buttons ── */
+  .flex.gap-4 > .cta-cyber,
+  .flex.gap-4 > button[class*="border"],
+  .flex.gap-6 > .cta-cyber,
+  .flex.gap-6 > button[class*="border"] {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .flex.gap-4,
+  .flex.gap-6 {
+    flex-wrap: wrap;
+  }
+
+  /* ── Tactical Gear header ── */
+  .flex.justify-between.items-end {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* ── Newsletter section ── */
+  .w-full.max-w-md.flex.gap-0 {
+    flex-direction: column;
+  }
+
+  .w-full.max-w-md.flex.gap-0 input {
+    width: 100%;
+  }
+
+  .w-full.max-w-md.flex.gap-0 button {
+    width: 100%;
+  }
+
+  /* ── Product page tag badges ── */
+  .flex.items-center.gap-3 {
+    flex-wrap: wrap;
+  }
+
+  /* ── Product page action buttons ── */
+  .flex.gap-4 {
+    flex-direction: column;
+  }
+
+  .flex.gap-4 button,
+  .flex.gap-4 a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* ── Competition ready box ── */
+  .flex.items-start.gap-6 {
+    flex-direction: column;
+  }
+
+  /* ── Schools section CTA reduction ── */
+  .lg\:p-20 { padding: 2rem !important; }
+}
+
+/* Tablet-ish overrides (between 768-1024) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .text-8xl { font-size: 4rem !important; }
+  .text-7xl { font-size: 3.5rem !important; }
+}
+
+/* Ensure hamburger is always hidden on desktop */
+@media (min-width: 768px) {
+  #mobile-hamburger {
+    display: none !important;
+  }
+  #mobile-panel,
+  #mobile-overlay {
+    display: none !important;
+  }
+}
