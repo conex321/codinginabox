@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Smart Anti-Aircraft Gun STEM Kit — Servo & Joystick Control | CodingInABox</title>
+    <meta name="description"
+        content="Build a joystick-controlled turret with servo motors and sensors. Learn angle calculation and targeting mechanics. Ages 10+. All parts included.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base { body { @apply bg-[#050B1A] text-slate-100 antialiased overflow-x-hidden; } }
+:root { --neon-cyan: #00F0FF; --neon-magenta: #FF00E5; --neon-green: #39FF14; --deep-navy: #050B1A; --glass-bg: rgba(10, 22, 40, 0.8); }
+.cyber-grid { background-image: linear-gradient(to right, rgba(0,240,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,240,255,0.06) 1px, transparent 1px); background-size: 50px 50px; }
+.glass-nav { background: rgba(5,11,26,0.95); backdrop-filter: blur(24px); border-bottom: 2px solid var(--neon-cyan); box-shadow: 0 4px 30px rgba(0,240,255,0.15); }
+.logo-animated { animation: logoFloat 3s ease-in-out infinite; filter: drop-shadow(0 2px 8px rgba(230,27,121,0.3)); }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.neon-text-cyan { text-shadow: 0 0 10px rgba(0,240,255,0.7), 0 0 20px rgba(0,240,255,0.4); }
+.cta-cyber { background: linear-gradient(90deg, #00F0FF 0%, #A855F7 50%, #FF00E5 100%); box-shadow: 0 0 15px rgba(0,240,255,0.4); transition: all 0.3s ease; }
+.cta-cyber:hover { box-shadow: 0 0 25px rgba(255,0,229,0.6); transform: scale(1.05); }
+.dark-glass { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid rgba(0,240,255,0.2); transition: all 0.3s ease; }
+.dark-glass:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,240,255,0.2); }
+.holographic-shim { position: relative; overflow: hidden; }
+.holographic-shim::after { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: linear-gradient(45deg, transparent 0%, rgba(0,240,255,0.1) 45%, rgba(255,0,229,0.1) 50%, rgba(0,240,255,0.1) 55%, transparent 100%); transform: rotate(25deg); pointer-events: none; }
+.mono-font { font-family: 'JetBrains Mono', monospace; }
+.thumb-active { border-color: var(--neon-cyan) !important; box-shadow: 0 0 10px rgba(0,240,255,0.4); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(5,11,26,0.98); backdrop-filter: blur(24px); border: 1px solid var(--neon-cyan); border-top: 2px solid var(--neon-cyan); box-shadow: 0 8px 30px rgba(0,240,255,0.2); padding: 8px 0; z-index: 100; }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
+        .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
+    </style>
+</head>
+
+<body class="font-['Inter',sans-serif]">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2"><img src="../logo.svg" alt="CodingInABox"
+                    class="h-14 w-auto logo-animated" /></a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../index.html">Home</a>
+                <div class="nav-dropdown">
+                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="../products.html">Kits</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../products/robot-car.html">Robot Car V4</a>
+                        <a href="../products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
+                        <a href="../products/laser-shooting-target.html">Laser Shooting Target</a>
+                        <a href="../products/smart-water-dispenser.html">Smart Water Dispenser</a>
+                        <a href="../products/solar-light-tracker.html">Solar Light Tracker</a>
+                        <a href="../products/robot-arm.html">Titan Arm 6-Axis</a>
+                        <a href="../products/mini-drone.html">Mini Drone X-2</a>
+                    </div>
+                </div>
+                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../courses.html">Courses</a>
+                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../about.html">About</a>
+                <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../contact.html">Contact</a>
+            </div>
+            <a href="../contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest">Get
+                Started</a>
+        </div>
+    </nav>
+
+    <div class="pt-24 pb-4 px-6 bg-[#020617]">
+        <div
+            class="max-w-[1400px] mx-auto flex items-center gap-2 text-xs mono-font text-slate-500 uppercase tracking-widest">
+            <a href="../products.html" class="hover:text-[var(--neon-cyan)] transition-colors">Kits_Arsenal</a>
+            <span class="text-[var(--neon-cyan)]">›</span>
+            <span class="text-[var(--neon-cyan)]">Anti_Aircraft_Gun</span>
+        </div>
+    </div>
+
+    <section class="py-16 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-start">
+            <div class="relative">
+                <div class="dark-glass rounded-sm p-4 holographic-shim border border-[rgba(0,240,255,0.3)]">
+                    <img id="mainImage" class="w-full aspect-square object-cover rounded-sm"
+                        src="../assets/images/products/anti-aircraft-gun.png" alt="Anti-Aircraft Gun Kit" />
+                </div>
+                <div class="grid grid-cols-3 gap-3 mt-4">
+                    <div class="dark-glass rounded-sm p-2 cursor-pointer thumb-active border-2 border-transparent"
+                        onclick="swapImage(this, '../assets/images/products/anti-aircraft-gun.png')"><img
+                            class="w-full aspect-square object-cover rounded-sm"
+                            src="../assets/images/products/anti-aircraft-gun.png" alt="Original" /></div>
+                    <div class="dark-glass rounded-sm p-2 cursor-pointer border-2 border-transparent hover:border-[var(--neon-cyan)]"
+                        onclick="swapImage(this, '../assets/images/products/generated/anti-aircraft-gun-hero.png')"><img
+                            class="w-full aspect-square object-cover rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+                            src="../assets/images/products/generated/anti-aircraft-gun-hero.png" alt="Hero shot" />
+                    </div>
+                    <div class="dark-glass rounded-sm p-2 cursor-pointer border-2 border-transparent hover:border-[var(--neon-cyan)]"
+                        onclick="swapImage(this, '../assets/images/products/anti-aircraft-gun.png')"><img
+                            class="w-full aspect-square object-cover rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+                            src="../assets/images/products/anti-aircraft-gun.png" alt="Detail" /></div>
+                </div>
+            </div>
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span
+                        class="px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em]">Intermediate</span>
+                    <span
+                        class="px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em]">Ages
+                        10+</span>
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">
+                    Anti-Aircraft Gun</h1>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-3xl font-extrabold mono-font text-[var(--neon-cyan)] neon-text-cyan">$32.36</span>
+                    <div class="flex text-[var(--neon-magenta)] gap-0.5">
+                        <span class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                    <span class="text-slate-500 text-xs mono-font">(38 reviews)</span>
+                </div>
+                <p class="text-slate-400 leading-relaxed mb-8 border-l-2 border-[var(--neon-cyan)] pl-6">
+                    Construct a smart turret with joystick control! This kit teaches servo motor mechanics, angle
+                    calculation, and sensor-based targeting through a hands-on build experience. Use the joystick to aim
+                    and the trigger mechanism to fire. A fantastic introduction to control systems and embedded
+                    programming.
+                </p>
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">timer</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Build Time</p>
+                            <p class="text-sm font-bold">5-7 Hours</p>
+                        </div>
+                    </div>
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">handyman</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Parts Count</p>
+                            <p class="text-sm font-bold">40+ Components</p>
+                        </div>
+                    </div>
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">code</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Languages</p>
+                            <p class="text-sm font-bold">C++ / Arduino</p>
+                        </div>
+                    </div>
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">memory</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Controller</p>
+                            <p class="text-sm font-bold">Arduino Compatible</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4 mb-8">
+                    <button
+                        class="cta-cyber text-white px-10 py-4 rounded-sm font-bold text-sm uppercase tracking-widest flex items-center gap-2"><span
+                            class="material-symbols-outlined">shopping_cart</span> Add to Cart</button>
+                    <button
+                        class="border border-[var(--neon-cyan)] text-[var(--neon-cyan)] px-8 py-4 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-[var(--neon-cyan)]/10 transition-colors">Buy
+                        for School</button>
+                </div>
+                <div class="space-y-2 text-sm text-slate-500">
+                    <div class="flex items-center gap-2"><span
+                            class="material-symbols-outlined text-[var(--neon-green)] text-sm">local_shipping</span>
+                        Free shipping on 5+ kits</div>
+                    <div class="flex items-center gap-2"><span
+                            class="material-symbols-outlined text-[var(--neon-green)] text-sm">inventory_2</span> All
+                        parts & tools included</div>
+                    <div class="flex items-center gap-2"><span
+                            class="material-symbols-outlined text-[var(--neon-green)] text-sm">menu_book</span>
+                        Step-by-step guide included</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/10">
+        <div class="max-w-[1400px] mx-auto">
+            <h2
+                class="text-2xl font-extrabold text-white mb-8 neon-text-cyan uppercase tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-[var(--neon-cyan)]">engineering</span> Tech Specifications
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">straighten</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Dimensions</p>
+                    <p class="text-sm font-bold mono-font">20×15×18cm</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">scale</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Weight</p>
+                    <p class="text-sm font-bold mono-font">420g</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">battery_full</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Battery</p>
+                    <p class="text-sm font-bold mono-font">AA Cells</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">sports_esports</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Control</p>
+                    <p class="text-sm font-bold mono-font">Joystick</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">rotate_right</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Motors</p>
+                    <p class="text-sm font-bold mono-font">2× Servos</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">code</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Languages</p>
+                    <p class="text-sm font-bold mono-font">C++ / Arduino</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#050B1A] cyber-grid">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">What You'll
+                Learn</h2>
+            <p class="text-slate-500 mono-font text-sm mb-12 max-w-2xl">Master servo mechanics, control systems, and
+                precision targeting algorithms.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-cyan)]"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-3xl mb-4 block">electric_bolt</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Electronics</h3>
+                    <p class="text-sm text-slate-400 mb-4">Servo motor control, joystick input reading, and trigger
+                        circuit design.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ PWM signal control</li>
+                        <li>→ Analog joystick mapping</li>
+                        <li>→ Trigger circuits</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)]"><span
+                        class="material-symbols-outlined text-[var(--neon-magenta)] text-3xl mb-4 block">terminal</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Programming</h3>
+                    <p class="text-sm text-slate-400 mb-4">Mapping joystick values to servo angles, implementing control
+                        loops.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ Value mapping functions</li>
+                        <li>→ Control loop logic</li>
+                        <li>→ Servo library usage</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-cyan)]"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-3xl mb-4 block">construction</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Mechanical</h3>
+                    <p class="text-sm text-slate-400 mb-4">Turret assembly, pivot mechanisms, and stable base
+                        construction.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ Pan & tilt mechanics</li>
+                        <li>→ Pivot bearings</li>
+                        <li>→ Weight balancing</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)]"><span
+                        class="material-symbols-outlined text-[var(--neon-magenta)] text-3xl mb-4 block">calculate</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Mathematics</h3>
+                    <p class="text-sm text-slate-400 mb-4">Angle calculation, trigonometry basics, and coordinate
+                        mapping.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ Angular velocity</li>
+                        <li>→ Coordinate systems</li>
+                        <li>→ Proportional control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#020617]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight">What's In The
+                Box</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">security</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Turret Body & Base</p><span
+                        class="text-[10px] mono-font text-green-400">×1 set</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">rotate_right</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Servo Motors</p><span
+                        class="text-[10px] mono-font text-green-400">×2 (pan & tilt)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">sports_esports</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Joystick Module</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">memory</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Arduino Board</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">ads_click</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Trigger Mechanism</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">battery_charging_full</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Battery Holder</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">usb</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">USB Cable</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">cable</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Wiring & Connectors</p><span
+                        class="text-[10px] mono-font text-green-400">×1 set</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">build</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Assembly Tools</p><span
+                        class="text-[10px] mono-font text-green-400">×1 set</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">menu_book</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Build Guide & Code</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight text-center">
+                Build Journey</h2>
+            <p class="text-center text-slate-500 mono-font text-sm mb-16">Estimated total: <span
+                    class="text-[var(--neon-cyan)] font-bold">5-7 hours</span> from unboxing to targeting</p>
+            <div class="relative flex flex-col md:flex-row justify-between gap-8">
+                <div
+                    class="hidden md:block absolute top-10 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-magenta)] to-[var(--neon-cyan)]">
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">01</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Unbox & Sort</h3>
+                    <p class="text-xs text-slate-400">Identify all components and organize parts. ~20 min.</p>
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">02</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Build Base</h3>
+                    <p class="text-xs text-slate-400">Construct the stable base and mount the turret pivot. ~2 hours.
+                    </p>
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-magenta)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(255,0,229,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-magenta)]">03</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Wire & Code</h3>
+                    <p class="text-xs text-slate-400">Connect servos, joystick module, and program control logic. ~2
+                        hours.</p>
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">04</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Test & Calibrate</h3>
+                    <p class="text-xs text-slate-400">Fine-tune servo ranges and joystick sensitivity. ~1 hour.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/10">
+        <div class="max-w-[1400px] mx-auto">
+            <h2
+                class="text-2xl font-extrabold text-white mb-8 neon-text-cyan uppercase tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-[var(--neon-cyan)]">school</span> Curriculum & Standards
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="dark-glass p-6 rounded-sm border-l-4 border-l-[var(--neon-cyan)]">
+                    <h3 class="text-sm font-bold text-[var(--neon-cyan)] uppercase tracking-wider mb-3 mono-font">STEM
+                        Standards</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Physics:
+                            Angular motion & torque</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Technology:
+                            Servo control & signal processing</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Engineering:
+                            Control system design</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Mathematics:
+                            Trigonometry & coordinate systems</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-6 rounded-sm border-l-4 border-l-[var(--neon-magenta)]">
+                    <h3 class="text-sm font-bold text-[var(--neon-magenta)] uppercase tracking-wider mb-3 mono-font">
+                        Suggested Lesson Plans</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 1-2:
+                            Servo motors & PWM signals</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 3:
+                            Joystick inputs & analog reading</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 4-5:
+                            Turret assembly & calibration</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 6:
+                            Advanced targeting algorithms</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-6 rounded-sm border-l-4 border-l-[var(--neon-green)]">
+                    <h3 class="text-sm font-bold text-[var(--neon-green)] uppercase tracking-wider mb-3 mono-font">
+                        Related Courses</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-green)]">▸</span> First Steps
+                            in Robotics (Beginner, 6 weeks)</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-green)]">▸</span> Servo Control
+                            Mastery (Intermediate, 4 weeks)</li>
+                    </ul><a href="../courses.html"
+                        class="text-[var(--neon-cyan)] text-xs uppercase tracking-widest font-bold mt-4 inline-block hover:text-white transition-colors">View
+                        All Courses →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight">Related Kits
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="robot-car.html" class="dark-glass rounded-sm overflow-hidden group block">
+                    <div class="h-48 overflow-hidden holographic-shim"><img
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                            src="../assets/images/products/robot-car.png" alt="Robot Car" /></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white uppercase tracking-wider mb-1">Robot Car V4</h3>
+                        <p class="text-xs text-slate-500 mb-2">Beginner • 6-8 hours • 50+ parts</p><span
+                            class="mono-font text-[var(--neon-cyan)] font-bold">$40.10</span>
+                    </div>
+                </a>
+                <a href="laser-shooting-target.html" class="dark-glass rounded-sm overflow-hidden group block">
+                    <div class="h-48 overflow-hidden holographic-shim"><img
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                            src="../assets/images/products/laser-shooting-target.png" alt="Laser Target" /></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white uppercase tracking-wider mb-1">Laser Shooting Target</h3>
+                        <p class="text-xs text-slate-500 mb-2">Beginner • 4-6 hours • 35+ parts</p><span
+                            class="mono-font text-[var(--neon-cyan)] font-bold">$31.59</span>
+                    </div>
+                </a>
+                <a href="robot-arm.html" class="dark-glass rounded-sm overflow-hidden group block">
+                    <div class="h-48 overflow-hidden holographic-shim"><img
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                            src="../assets/images/products/robot-arm.png" alt="Robot Arm" /></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white uppercase tracking-wider mb-1">Titan Arm 6-Axis</h3>
+                        <p class="text-xs text-slate-500 mb-2">Intermediate • 8-10 hours • 60+ parts</p><span
+                            class="mono-font text-[var(--neon-cyan)] font-bold">$39.31</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#020617] border-t border-[var(--neon-cyan)]/20">
+        <div class="max-w-[800px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight text-center">FAQ
+                Protocol</h2>
+            <div class="space-y-4">
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>What age is this kit suitable for?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">The
+                        Anti-Aircraft Gun kit is recommended for ages 10 and up. It's an intermediate level kit that
+                        requires some patience with servo calibration.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>How long does it take to build?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">The
+                        complete build takes approximately 5-7 hours. We recommend spreading this over 3 sessions — base
+                        assembly, wiring, and programming/calibration.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>Can this kit be used for competitions?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">This is a
+                        standalone educational kit not currently eligible for competition categories. However, the servo
+                        skills learned transfer directly to competition-ready kits like the Robot Car and Robot Arm.
+                    </div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>Are batteries included?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">A battery
+                        holder is included but AA batteries need to be purchased separately. We recommend quality
+                        alkaline batteries for consistent servo performance.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#020611] pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-[300px] cyber-grid opacity-10 pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 relative z-10">
+            <div><a href="../index.html" class="flex items-center gap-2 mb-8"><img src="../logo.svg" alt="CodingInABox"
+                        class="h-10 w-auto" /></a>
+                <p class="text-slate-500 text-xs mono-font uppercase leading-relaxed tracking-tighter">> Leading STEM
+                    ecosystem. Inspiring creators since 2026.</p>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Archive</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="../about.html">About Us</a>
+                    </li>
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="../products.html">Kits</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors"
+                            href="../competitions.html">Competitions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Nodes</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="../courses.html">Courses</a>
+                    </li>
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors"
+                            href="../sponsorship.html">Sponsors</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Protocols</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="#">Privacy</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-[1400px] mx-auto px-6 pt-12 border-t border-[var(--neon-cyan)]/20 flex flex-col md:flex-row items-center justify-between gap-6 text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em] relative z-10">
+            <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>function swapImage(thumb, src) { document.getElementById('mainImage').src = src; document.querySelectorAll('.grid .dark-glass').forEach(el => { el.classList.remove('thumb-active'); el.classList.add('border-transparent'); }); thumb.classList.add('thumb-active'); thumb.classList.remove('border-transparent'); }</script>
+</body>
+
+</html>

@@ -101,6 +101,11 @@
                 background-size: 40px 40px;
             }
         }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(5,11,26,0.98); backdrop-filter: blur(24px); border: 1px solid var(--neon-cyan); border-top: 2px solid var(--neon-cyan); box-shadow: 0 8px 30px rgba(0,240,255,0.2); padding: 8px 0; z-index: 100; }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
+        .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
     </style>
 </head>
 
@@ -114,8 +119,18 @@
             <nav class="hidden md:flex items-center gap-8">
                 <a class="text-xs uppercase font-bold font-mono tracking-widest text-slate-400 hover:text-neon-cyan transition-colors"
                     href="index.html">Home</a>
-                <a class="text-xs uppercase font-bold font-mono tracking-widest text-slate-400 hover:text-neon-cyan transition-colors"
-                    href="products.html">Kits</a>
+                <div class="nav-dropdown">
+                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="products.html">Kits</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="products/robot-car.html">Robot Car V4</a>
+                        <a href="products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
+                        <a href="products/laser-shooting-target.html">Laser Shooting Target</a>
+                        <a href="products/smart-water-dispenser.html">Smart Water Dispenser</a>
+                        <a href="products/solar-light-tracker.html">Solar Light Tracker</a>
+                        <a href="products/robot-arm.html">Titan Arm 6-Axis</a>
+                        <a href="products/mini-drone.html">Mini Drone X-2</a>
+                    </div>
+                </div>
                 <a class="text-xs uppercase font-bold font-mono tracking-widest text-slate-400 hover:text-neon-cyan transition-colors"
                     href="courses.html">Courses</a>
                 <a class="text-xs uppercase font-bold font-mono tracking-widest text-neon-cyan"

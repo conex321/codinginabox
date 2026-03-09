@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mini Drone X-2 STEM Kit — Build Your Own Quadcopter | CodingInABox</title>
+    <meta name="description"
+        content="Build a custom quadcopter from scratch with flight controller, ESC, and transmitter. Learn aerodynamics, PID tuning, and flight physics. Ages 12+. Competition ready.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base { body { @apply bg-[#050B1A] text-slate-100 antialiased overflow-x-hidden; } }
+:root { --neon-cyan: #00F0FF; --neon-magenta: #FF00E5; --neon-green: #39FF14; --glass-bg: rgba(10, 22, 40, 0.8); }
+.cyber-grid { background-image: linear-gradient(to right, rgba(0,240,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,240,255,0.06) 1px, transparent 1px); background-size: 50px 50px; }
+.glass-nav { background: rgba(5,11,26,0.95); backdrop-filter: blur(24px); border-bottom: 2px solid var(--neon-cyan); box-shadow: 0 4px 30px rgba(0,240,255,0.15); }
+.logo-animated { animation: logoFloat 3s ease-in-out infinite; filter: drop-shadow(0 2px 8px rgba(230,27,121,0.3)); }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.neon-text-cyan { text-shadow: 0 0 10px rgba(0,240,255,0.7), 0 0 20px rgba(0,240,255,0.4); }
+.cta-cyber { background: linear-gradient(90deg, #00F0FF 0%, #A855F7 50%, #FF00E5 100%); box-shadow: 0 0 15px rgba(0,240,255,0.4); transition: all 0.3s ease; }
+.cta-cyber:hover { box-shadow: 0 0 25px rgba(255,0,229,0.6); transform: scale(1.05); }
+.dark-glass { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid rgba(0,240,255,0.2); transition: all 0.3s ease; }
+.dark-glass:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,240,255,0.2); }
+.holographic-shim { position: relative; overflow: hidden; }
+.holographic-shim::after { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: linear-gradient(45deg, transparent 0%, rgba(0,240,255,0.1) 45%, rgba(255,0,229,0.1) 50%, rgba(0,240,255,0.1) 55%, transparent 100%); transform: rotate(25deg); pointer-events: none; }
+.mono-font { font-family: 'JetBrains Mono', monospace; }
+.thumb-active { border-color: var(--neon-cyan) !important; box-shadow: 0 0 10px rgba(0,240,255,0.4); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(5,11,26,0.98); backdrop-filter: blur(24px); border: 1px solid var(--neon-cyan); border-top: 2px solid var(--neon-cyan); box-shadow: 0 8px 30px rgba(0,240,255,0.2); padding: 8px 0; z-index: 100; }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; transition: all 0.2s; }
+        .nav-dropdown-menu a:hover { color: var(--neon-cyan); background: rgba(0,240,255,0.05); padding-left: 24px; }
+    </style>
+</head>
+
+<body class="font-['Inter',sans-serif]">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between"><a href="../index.html"
+                class="flex items-center gap-2"><img src="../logo.svg" alt="CodingInABox"
+                    class="h-14 w-auto logo-animated" /></a>
+            <div class="hidden md:flex items-center gap-8"><a
+                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../index.html">Home</a><div class="nav-dropdown">
+                    <a class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors" href="../products.html">Kits</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../products/robot-car.html">Robot Car V4</a>
+                        <a href="../products/anti-aircraft-gun.html">Anti-Aircraft Gun</a>
+                        <a href="../products/laser-shooting-target.html">Laser Shooting Target</a>
+                        <a href="../products/smart-water-dispenser.html">Smart Water Dispenser</a>
+                        <a href="../products/solar-light-tracker.html">Solar Light Tracker</a>
+                        <a href="../products/robot-arm.html">Titan Arm 6-Axis</a>
+                        <a href="../products/mini-drone.html">Mini Drone X-2</a>
+                    </div>
+                </div><a
+                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../courses.html">Courses</a><a
+                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../about.html">About</a><a
+                    class="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="../contact.html">Contact</a></div><a href="../contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest">Get
+                Started</a>
+        </div>
+    </nav>
+
+    <div class="pt-24 pb-4 px-6 bg-[#020617]">
+        <div
+            class="max-w-[1400px] mx-auto flex items-center gap-2 text-xs mono-font text-slate-500 uppercase tracking-widest">
+            <a href="../products.html" class="hover:text-[var(--neon-cyan)] transition-colors">Kits_Arsenal</a><span
+                class="text-[var(--neon-cyan)]">›</span><span class="text-[var(--neon-cyan)]">Mini_Drone</span></div>
+    </div>
+
+    <section class="py-16 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-start">
+            <div class="relative">
+                <div class="dark-glass rounded-sm p-4 holographic-shim border border-[rgba(0,240,255,0.3)]"><img
+                        id="mainImage" class="w-full aspect-square object-cover rounded-sm"
+                        src="../assets/images/products/mini-drone.png" alt="Mini Drone Kit" /></div>
+                <div class="grid grid-cols-3 gap-3 mt-4">
+                    <div class="dark-glass rounded-sm p-2 cursor-pointer thumb-active border-2 border-transparent"
+                        onclick="swapImage(this, '../assets/images/products/mini-drone.png')"><img
+                            class="w-full aspect-square object-cover rounded-sm"
+                            src="../assets/images/products/mini-drone.png" alt="Original" /></div>
+                    <div class="dark-glass rounded-sm p-2 cursor-pointer border-2 border-transparent hover:border-[var(--neon-cyan)]"
+                        onclick="swapImage(this, '../assets/images/products/generated/mini-drone-hero.png')"><img
+                            class="w-full aspect-square object-cover rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+                            src="../assets/images/products/generated/mini-drone-hero.png" alt="Hero" /></div>
+                    <div class="dark-glass rounded-sm p-2 cursor-pointer border-2 border-transparent hover:border-[var(--neon-cyan)]"
+                        onclick="swapImage(this, '../assets/images/products/mini-drone.png')"><img
+                            class="w-full aspect-square object-cover rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+                            src="../assets/images/products/mini-drone.png" alt="Detail" /></div>
+                </div>
+            </div>
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span
+                        class="px-3 py-1 bg-[var(--neon-magenta)]/10 border border-[var(--neon-magenta)]/30 text-[var(--neon-magenta)] text-[10px] font-bold uppercase tracking-[0.2em]">Advanced</span>
+                    <span
+                        class="px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em]">Ages
+                        12+</span>
+                    <span
+                        class="px-3 py-1 bg-[var(--neon-magenta)]/10 border border-[var(--neon-magenta)]/30 text-[var(--neon-magenta)] text-[10px] font-bold uppercase tracking-[0.2em]">Competition
+                        Ready</span>
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">
+                    Mini Drone X-2</h1>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-3xl font-extrabold mono-font text-[var(--neon-cyan)] neon-text-cyan">$94.90</span>
+                    <div class="flex text-[var(--neon-magenta)] gap-0.5"><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span><span
+                            class="material-symbols-outlined text-sm">star</span></div>
+                    <span class="text-slate-500 text-xs mono-font">(42 reviews)</span>
+                </div>
+                <p class="text-slate-400 leading-relaxed mb-8 border-l-2 border-[var(--neon-cyan)] pl-6">Our flagship
+                    kit — build a fully functional quadcopter from scratch! Learn aerodynamics, brushless motor control,
+                    PID tuning, and flight physics. Includes a flight controller, ESC board, transmitter/receiver, and
+                    carbon-fiber-reinforced frame. Compete in drone racing and obstacle courses. The most advanced STEM
+                    kit in our lineup.</p>
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">timer</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Build Time</p>
+                            <p class="text-sm font-bold">10-14 Hours</p>
+                        </div>
+                    </div>
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">handyman</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Parts Count</p>
+                            <p class="text-sm font-bold">75+ Components</p>
+                        </div>
+                    </div>
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">code</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Languages</p>
+                            <p class="text-sm font-bold">C++ / Python</p>
+                        </div>
+                    </div>
+                    <div class="dark-glass rounded-sm p-4 flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)]">memory</span>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Controller</p>
+                            <p class="text-sm font-bold">Flight Controller</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4 mb-8">
+                    <button
+                        class="cta-cyber text-white px-10 py-4 rounded-sm font-bold text-sm uppercase tracking-widest flex items-center gap-2"><span
+                            class="material-symbols-outlined">shopping_cart</span> Add to Cart</button>
+                    <button
+                        class="border border-[var(--neon-cyan)] text-[var(--neon-cyan)] px-8 py-4 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-[var(--neon-cyan)]/10 transition-colors">Buy
+                        for School</button>
+                </div>
+                <div class="space-y-2 text-sm text-slate-500">
+                    <div class="flex items-center gap-2"><span
+                            class="material-symbols-outlined text-[var(--neon-green)] text-sm">local_shipping</span>
+                        Free shipping on 5+ kits</div>
+                    <div class="flex items-center gap-2"><span
+                            class="material-symbols-outlined text-[var(--neon-green)] text-sm">inventory_2</span> All
+                        parts, tools & transmitter included</div>
+                    <div class="flex items-center gap-2"><span
+                            class="material-symbols-outlined text-[var(--neon-green)] text-sm">emoji_events</span>
+                        Competition eligible — Drone Racing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/10">
+        <div class="max-w-[1400px] mx-auto">
+            <h2
+                class="text-2xl font-extrabold text-white mb-8 neon-text-cyan uppercase tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-[var(--neon-cyan)]">engineering</span> Tech Specifications
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">straighten</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Frame Size</p>
+                    <p class="text-sm font-bold mono-font">250mm</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">scale</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Weight</p>
+                    <p class="text-sm font-bold mono-font">~280g</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">air</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Motors</p>
+                    <p class="text-sm font-bold mono-font">4× Brushless</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">speed</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Flight Time</p>
+                    <p class="text-sm font-bold mono-font">~8 min</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">settings_remote</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Range</p>
+                    <p class="text-sm font-bold mono-font">~100m</p>
+                </div>
+                <div class="dark-glass p-5 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">code</span>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Languages</p>
+                    <p class="text-sm font-bold mono-font">C++ / Python</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#050B1A] cyber-grid">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">What You'll
+                Learn</h2>
+            <p class="text-slate-500 mono-font text-sm mb-12 max-w-2xl">Aerodynamics, flight physics, brushless motor
+                control, and PID tuning.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-cyan)]"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-3xl mb-4 block">air</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Aerodynamics</h3>
+                    <p class="text-sm text-slate-400 mb-4">Lift, drag, thrust, prop pitch, and how quadcopters achieve
+                        stable flight.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ Bernoulli's principle</li>
+                        <li>→ Thrust vectoring</li>
+                        <li>→ Prop selection</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)]"><span
+                        class="material-symbols-outlined text-[var(--neon-magenta)] text-3xl mb-4 block">tune</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">PID Control</h3>
+                    <p class="text-sm text-slate-400 mb-4">Proportional-integral-derivative tuning for hover stability
+                        and flight control.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ P, I, D terms</li>
+                        <li>→ Stability tuning</li>
+                        <li>→ Gyro feedback</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-cyan)]"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-3xl mb-4 block">bolt</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Brushless Motors</h3>
+                    <p class="text-sm text-slate-400 mb-4">ESC programming, motor timing, KV ratings, and power
+                        management.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ ESC calibration</li>
+                        <li>→ BLDC physics</li>
+                        <li>→ Current draw</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)]"><span
+                        class="material-symbols-outlined text-[var(--neon-magenta)] text-3xl mb-4 block">flight</span>
+                    <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">Flight Skills</h3>
+                    <p class="text-sm text-slate-400 mb-4">Transmitter skills, flight modes, altitude hold, and racing
+                        techniques.</p>
+                    <ul class="text-xs text-slate-500 space-y-1 mono-font">
+                        <li>→ Rate vs angle mode</li>
+                        <li>→ Throttle curves</li>
+                        <li>→ Race gate tactics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#020617]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight">What's In The
+                Box</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">grid_on</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Drone Frame</p><span
+                        class="text-[10px] mono-font text-green-400">×1 (reinforced)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">air</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Brushless Motors</p><span
+                        class="text-[10px] mono-font text-green-400">×4</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">cyclone</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Propellers</p><span
+                        class="text-[10px] mono-font text-green-400">×8 (4+4 spare)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">bolt</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">ESC Board</p><span
+                        class="text-[10px] mono-font text-green-400">×1 (4-in-1)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">memory</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Flight Controller</p><span
+                        class="text-[10px] mono-font text-green-400">×1 (with gyro)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">settings_remote</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Transmitter</p><span
+                        class="text-[10px] mono-font text-green-400">×1 (6-channel)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">cell_tower</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Receiver</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">battery_charging_full</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">LiPo Battery</p><span
+                        class="text-[10px] mono-font text-green-400">×1 (3S 450mAh)</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">electrical_services</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">LiPo Charger</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">cable</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Wiring & Connectors</p><span
+                        class="text-[10px] mono-font text-green-400">×1 set</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">build</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Assembly Tools</p><span
+                        class="text-[10px] mono-font text-green-400">×1 set</span>
+                </div>
+                <div class="dark-glass p-6 rounded-sm text-center"><span
+                        class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block">menu_book</span>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Build Guide & Code</p><span
+                        class="text-[10px] mono-font text-green-400">×1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight text-center">
+                Build Journey</h2>
+            <p class="text-center text-slate-500 mono-font text-sm mb-16">Estimated total: <span
+                    class="text-[var(--neon-cyan)] font-bold">10-14 hours</span> from unboxing to first flight</p>
+            <div class="relative flex flex-col md:flex-row justify-between gap-8">
+                <div
+                    class="hidden md:block absolute top-10 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-magenta)] to-[var(--neon-cyan)]">
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">01</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Unbox & Learn</h3>
+                    <p class="text-xs text-slate-400">Study flight theory and sort 75+ components. ~1 hour.</p>
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-cyan)]">02</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Build Frame</h3>
+                    <p class="text-xs text-slate-400">Assemble frame, mount motors and ESC. ~4 hours.</p>
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-magenta)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(255,0,229,0.4)]">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-magenta)]">03</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Wire & Calibrate</h3>
+                    <p class="text-xs text-slate-400">Connect electronics, calibrate ESC and PID. ~4 hours.</p>
+                </div>
+                <div class="flex-1 text-center relative">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-green)] flex items-center justify-center mb-6 z-10 relative shadow-[0_0_20px_rgba(57,255,20,0.4)] animate-pulse">
+                        <span class="mono-font text-2xl font-bold text-[var(--neon-green)]">04</span></div>
+                    <h3 class="font-bold text-white uppercase tracking-widest text-sm mb-2">Fly!</h3>
+                    <p class="text-xs text-slate-400">First hover, then master flight controls and race!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/10">
+        <div class="max-w-[1400px] mx-auto">
+            <h2
+                class="text-2xl font-extrabold text-white mb-8 neon-text-cyan uppercase tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-[var(--neon-cyan)]">school</span> Curriculum & Standards
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="dark-glass p-6 rounded-sm border-l-4 border-l-[var(--neon-cyan)]">
+                    <h3 class="text-sm font-bold text-[var(--neon-cyan)] uppercase tracking-wider mb-3 mono-font">STEM
+                        Standards</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Physics:
+                            Aerodynamics, lift & drag forces</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Technology:
+                            Brushless motors & ESC control</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Engineering:
+                            PID control & flight dynamics</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-cyan)]">▸</span> Mathematics:
+                            Vector math & orientation</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-6 rounded-sm border-l-4 border-l-[var(--neon-magenta)]">
+                    <h3 class="text-sm font-bold text-[var(--neon-magenta)] uppercase tracking-wider mb-3 mono-font">
+                        Suggested Lesson Plans</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 1-2:
+                            Aerodynamics & flight theory</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 3-4:
+                            Frame assembly & motor mounting</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 5-6:
+                            ESC calibration & wiring</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 7-8:
+                            PID tuning & flight training</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-magenta)]">▸</span> Week 9-10:
+                            Competition prep & racing</li>
+                    </ul>
+                </div>
+                <div class="dark-glass p-6 rounded-sm border-l-4 border-l-[var(--neon-green)]">
+                    <h3 class="text-sm font-bold text-[var(--neon-green)] uppercase tracking-wider mb-3 mono-font">
+                        Related Courses</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-green)]">▸</span> Drone &
+                            Flight Academy (Advanced, 10 weeks)</li>
+                        <li class="flex items-start gap-2"><span class="text-[var(--neon-green)]">▸</span> Competition
+                            Bot Workshop (Advanced, 4 weeks)</li>
+                    </ul><a href="../courses.html"
+                        class="text-[var(--neon-cyan)] text-xs uppercase tracking-widest font-bold mt-4 inline-block hover:text-white transition-colors">View
+                        All Courses →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto">
+            <div
+                class="relative bg-gradient-to-r from-[var(--neon-cyan)]/20 via-[var(--neon-magenta)]/10 to-[var(--neon-green)]/20 p-1 rounded-sm">
+                <div class="bg-[#050B1A] p-10 rounded-sm">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-16 h-16 bg-[var(--neon-green)]/10 border border-[var(--neon-green)] flex items-center justify-center rounded-sm flex-shrink-0">
+                            <span class="material-symbols-outlined text-[var(--neon-green)] text-3xl">trophy</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-extrabold text-white uppercase tracking-tight mb-4 neon-text-cyan">
+                                Competition-Ready Kit!</h3>
+                            <p class="text-slate-400 mb-6">The Mini Drone X-2 qualifies for multiple competition
+                                categories:</p>
+                            <div class="grid md:grid-cols-2 gap-3 max-w-md">
+                                <div class="dark-glass p-3 rounded-sm text-center">
+                                    <p class="text-[10px] mono-font text-[var(--neon-cyan)] font-bold">C3</p>
+                                    <p class="text-xs text-slate-400">Drone Racing</p>
+                                </div>
+                                <div class="dark-glass p-3 rounded-sm text-center">
+                                    <p class="text-[10px] mono-font text-[var(--neon-cyan)] font-bold">C4</p>
+                                    <p class="text-xs text-slate-400">Obstacle Navigation</p>
+                                </div>
+                            </div>
+                            <a href="../competitions.html"
+                                class="cta-cyber text-white px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest inline-block mt-6">View
+                                Competition Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#020617]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight">Related Kits
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="robot-arm.html" class="dark-glass rounded-sm overflow-hidden group block">
+                    <div class="h-48 overflow-hidden holographic-shim"><img
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                            src="../assets/images/products/robot-arm.png" alt="Robot Arm" /></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white uppercase tracking-wider mb-1">Titan Arm 6-Axis</h3>
+                        <p class="text-xs text-slate-500 mb-2">Intermediate • 8-10 hours • 60+ parts</p><span
+                            class="mono-font text-[var(--neon-cyan)] font-bold">$39.31</span>
+                    </div>
+                </a>
+                <a href="robot-car.html" class="dark-glass rounded-sm overflow-hidden group block">
+                    <div class="h-48 overflow-hidden holographic-shim"><img
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                            src="../assets/images/products/robot-car.png" alt="Robot Car" /></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white uppercase tracking-wider mb-1">Robot Car V4</h3>
+                        <p class="text-xs text-slate-500 mb-2">Beginner • 6-8 hours • 50+ parts</p><span
+                            class="mono-font text-[var(--neon-cyan)] font-bold">$40.10</span>
+                    </div>
+                </a>
+                <a href="anti-aircraft-gun.html" class="dark-glass rounded-sm overflow-hidden group block">
+                    <div class="h-48 overflow-hidden holographic-shim"><img
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                            src="../assets/images/products/anti-aircraft-gun.png" alt="Anti-Aircraft Gun" /></div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white uppercase tracking-wider mb-1">Anti-Aircraft Gun</h3>
+                        <p class="text-xs text-slate-500 mb-2">Intermediate • 5-7 hours • 40+ parts</p><span
+                            class="mono-font text-[var(--neon-cyan)] font-bold">$32.36</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#050B1A] border-t border-[var(--neon-cyan)]/20">
+        <div class="max-w-[800px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight text-center">FAQ
+                Protocol</h2>
+            <div class="space-y-4">
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>Is the drone safe for indoor use?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">We
+                        recommend outdoor flying in open spaces or large indoor halls. The drone includes prop guards
+                        for safety. Always fly under adult supervision and check local drone regulations.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>How long does the battery last?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">The
+                        included 3S 450mAh LiPo provides approximately 8 minutes of flight time. Additional batteries
+                        can be purchased separately. The LiPo charger is included in the kit.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary
+                        class="p-6 cursor-pointer flex justify-between items-center font-bold text-white uppercase tracking-wider text-sm">
+                        <span>What if I crash — are parts replaceable?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">The kit
+                        includes 4 spare propellers. Additional replacement parts (props, motors, frame sections) are
+                        available through our store. Crashing is part of the learning process!</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#020611] pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-[300px] cyber-grid opacity-10 pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 relative z-10">
+            <div><a href="../index.html" class="flex items-center gap-2 mb-8"><img src="../logo.svg" alt="CodingInABox"
+                        class="h-10 w-auto" /></a>
+                <p class="text-slate-500 text-xs mono-font uppercase leading-relaxed tracking-tighter">> Leading STEM
+                    ecosystem. Inspiring creators since 2026.</p>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Archive</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="../about.html">About Us</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="../products.html">Kits</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="../competitions.html">Competitions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Nodes</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="../courses.html">Courses</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="../sponsorship.html">Sponsors</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Protocols</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="#">Privacy</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-[1400px] mx-auto px-6 pt-12 border-t border-[var(--neon-cyan)]/20 text-center text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em] relative z-10">
+            <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>function swapImage(thumb, src) { document.getElementById('mainImage').src = src; document.querySelectorAll('.grid .dark-glass').forEach(el => { el.classList.remove('thumb-active'); el.classList.add('border-transparent'); }); thumb.classList.add('thumb-active'); thumb.classList.remove('border-transparent'); }</script>
+</body>
+
+</html>
