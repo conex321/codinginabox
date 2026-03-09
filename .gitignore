@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# Agent & tool files
+.agents/
+.stitch/
+.gemini/
+
+# Temp files
+*.tmp
+*.log
+
+# Large binary files
+*.docx
+*.splinecode

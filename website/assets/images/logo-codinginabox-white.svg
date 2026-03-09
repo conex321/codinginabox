@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="48" viewBox="0 0 240 48">
+  <defs>
+    <linearGradient id="logoGradW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA"/>
+      <stop offset="100%" style="stop-color:#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <!-- Box icon -->
+  <rect x="2" y="8" width="32" height="32" rx="6" fill="url(#logoGradW)"/>
+  <!-- Code brackets inside box -->
+  <text x="10" y="30" font-family="JetBrains Mono, monospace" font-size="18" font-weight="600" fill="white">&lt;/&gt;</text>
+  <!-- Brand text (white for dark backgrounds) -->
+  <text x="42" y="22" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">
+    CodingInA<tspan fill="url(#logoGradW)">Box</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="42" y="38" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="rgba(255,255,255,0.6)" letter-spacing="2">BUILD. CODE. COMPETE.</text>
+</svg>

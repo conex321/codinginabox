@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cyberpunk STEM Kits - CodingInABox</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@300;400;500;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "cyan-neon": "#00F0FF",
+                        "magenta-neon": "#FF00E5",
+                        "green-neon": "#39FF14",
+                        "navy-space": "#050B1A",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-card {
+                background: rgba(10, 22, 40, 0.8);
+                backdrop-filter: blur(16px);
+                border: 1px solid #00F0FF33;
+            }
+            .glass-card:hover {
+                border-color: #00F0FF;
+                box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            }
+            .text-glow-cyan {
+                text-shadow: 0 0 10px #00F0FF, 0 0 20px #00F0FF66;
+            }
+            .text-glow-magenta {
+                text-shadow: 0 0 10px #FF00E5, 0 0 20px #FF00E566;
+            }
+            .neon-border-glow {
+                box-shadow: 0 0 5px #00F0FF, inset 0 0 5px #00F0FF;
+            }
+            .circuit-pattern {
+                background-image: radial-gradient(#00F0FF 0.5px, transparent 0.5px), radial-gradient(#00F0FF 0.5px, #050B1A 0.5px);
+                background-size: 20px 20px;
+                background-position: 0 0, 10px 10px;
+                opacity: 0.1;
+            }
+            .hologram-shimmer {
+                position: relative;
+                overflow: hidden;
+            }
+            .hologram-shimmer::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    125deg,
+                    transparent 0%,
+                    rgba(0, 240, 255, 0.1) 40%,
+                    rgba(255, 0, 229, 0.1) 50%,
+                    rgba(0, 240, 255, 0.1) 60%,
+                    transparent 100%
+                );
+                pointer-events: none;
+            }
+            .grid-bg {
+                background-image: 
+                    linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+        }
+    </style>
+    <style>
+        .logo-animated {
+            animation: logoFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 2px 8px rgba(230, 27, 121, 0.3));
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .logo-animated:hover {
+            filter: drop-shadow(0 4px 16px rgba(230, 27, 121, 0.5));
+            transform: scale(1.05);
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-navy-space font-display text-white selection:bg-cyan-neon selection:text-navy-space">
+    <nav class="fixed top-0 w-full z-50 bg-navy-space/95 backdrop-blur-xl border-b-2 border-cyan-neon/60"
+        style="box-shadow: 0 4px 30px rgba(0, 240, 255, 0.15), 0 1px 0 rgba(0, 240, 255, 0.3)">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <div class="flex items-center gap-2">
+                    <img src="logo.svg" alt="CodingInABox" class="h-14 w-auto" />
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-xs font-bold tracking-widest uppercase text-cyan-neon" href="products.html">Kits</a>
+                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
+                        href="courses.html">Courses</a>
+                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
+                        href="about.html">About</a>
+                    <a class="text-xs font-bold tracking-widest uppercase hover:text-cyan-neon transition-colors"
+                        href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-cyan-neon/60 hover:text-cyan-neon">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <button
+                    class="border border-cyan-neon text-cyan-neon px-6 py-2 rounded-none font-bold text-xs tracking-widest uppercase hover:bg-cyan-neon hover:text-navy-space transition-all shadow-[inset_0_0_10px_#00F0FF33]">
+                    Access Portal
+                </button>
+            </div>
+        </div>
+    </nav>
+    <section class="relative pt-40 pb-32 px-6 overflow-hidden min-h-[500px] flex items-center justify-center">
+        <div class="absolute inset-0 grid-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-space/50 to-navy-space"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-neon/5 rounded-full blur-[120px]">
+        </div>
+        <div class="relative z-10 text-center max-w-4xl">
+            <div
+                class="inline-block px-3 py-1 border border-cyan-neon/30 text-cyan-neon text-[10px] tracking-[0.3em] uppercase mb-6 bg-cyan-neon/5">
+                System Ready // Hardware Catalog</div>
+            <h1
+                class="text-white text-6xl md:text-8xl font-black leading-none mb-8 text-glow-cyan tracking-tighter italic uppercase">
+                STEM Kits Arsenal
+            </h1>
+            <p class="text-cyan-neon/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto font-mono">
+                Deploy high-performance robotics frameworks. Master the neural links between code and machine.
+            </p>
+            <div class="mt-12 flex justify-center gap-6">
+                <button
+                    class="bg-cyan-neon text-navy-space px-10 py-4 font-black uppercase tracking-tighter hover:bg-white transition-colors shadow-[0_0_20px_#00F0FF]">
+                    Compare Hardware
+                </button>
+                <button
+                    class="border border-magenta-neon text-magenta-neon px-10 py-4 font-black uppercase tracking-tighter hover:bg-magenta-neon hover:text-white transition-all shadow-[inset_0_0_15px_#FF00E533]">
+                    Full Database
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="px-6 -mt-10 relative z-20">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="glass-card p-4 flex flex-wrap items-center justify-between gap-4 border-cyan-neon/30">
+                <div class="flex gap-2">
+                    <button
+                        class="bg-cyan-neon text-navy-space px-4 py-2 text-[10px] font-black tracking-widest uppercase">All
+                        Units</button>
+                    <button
+                        class="border border-cyan-neon/30 px-4 py-2 text-[10px] font-black tracking-widest uppercase hover:border-cyan-neon transition-colors">Robotics</button>
+                    <button
+                        class="border border-cyan-neon/30 px-4 py-2 text-[10px] font-black tracking-widest uppercase hover:border-cyan-neon transition-colors">Aviation</button>
+                    <button
+                        class="border border-cyan-neon/30 px-4 py-2 text-[10px] font-black tracking-widest uppercase hover:border-cyan-neon transition-colors">Automation</button>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <button
+                            class="flex items-center gap-2 border border-cyan-neon/30 px-4 py-2 text-[10px] font-black tracking-widest uppercase">
+                            Sort by Protocol <span class="material-symbols-outlined text-sm">expand_more</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-cyan-neon/20 to-transparent pointer-events-none">
+                    </div>
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
+                            data-alt="Futuristic DIY robot car kit assembly"
+                            src="assets/images/products/robot-car.png" />
+                        <span
+                            class="absolute top-3 left-3 bg-green-neon text-navy-space text-[10px] font-black px-3 py-1 shadow-[0_0_10px_#39FF14]">NEW
+                            UNIT</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Robot Car</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v4.0.2</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">Neural-linked
+                            obstacle navigation &amp; tracking system.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$40.10</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star_half</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-all duration-700"
+                            data-alt="Mechanical robotic gun kit with sensors"
+                            src="assets/images/products/mini-drone.png" />
+                        <span
+                            class="absolute top-3 left-3 bg-gradient-to-r from-cyan-neon to-magenta-neon text-white text-[10px] font-black px-3 py-1 shadow-[0_0_10px_#FF00E566]">POPULAR</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Anti-Air Sentinel</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v1.8.9</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">Radar-guided
+                            target tracking array &amp; rotation modules.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$45.50</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80" data-alt="Laser target game kit components"
+                            src="assets/images/products/robot-arm.png" />
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Laser Target</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v2.1.0</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">Scoring matrix
+                            with ultra-sensitive light detection.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$38.00</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs text-white/20">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80"
+                            data-alt="Automated water dispenser system prototype"
+                            src="assets/images/products/laser-shooting-target.png" />
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Water Automata</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v3.5.5</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">Touchless IR
+                            sensor array for automated distribution.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$35.20</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80" data-alt="Solar panel tracker mechanism"
+                            src="assets/images/products/anti-aircraft-gun.png" />
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Light Tracker</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v1.2.0</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">Dual-axis photonic
+                            orientation for max energy gain.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$32.90</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80" data-alt="Programmable robotic arm kit"
+                            src="assets/images/products/smart-water-dispenser.png" />
+                        <span
+                            class="absolute top-3 left-3 bg-gradient-to-r from-cyan-neon to-magenta-neon text-white text-[10px] font-black px-3 py-1 shadow-[0_0_10px_#FF00E566]">POPULAR</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Titan Arm</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v5.0.0</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">6-DOF precision
+                            assembly with inverse kinematics.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$55.00</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+                <div class="glass-card p-5 group transition-all duration-500 flex flex-col relative overflow-hidden">
+                    <div
+                        class="relative h-56 bg-navy-space rounded mb-6 overflow-hidden hologram-shimmer border border-cyan-neon/10">
+                        <img class="w-full h-full object-cover opacity-80" data-alt="Mini quadcopter drone DIY kit"
+                            src="assets/images/products/solar-light-tracker.png" />
+                        <span
+                            class="absolute top-3 left-3 bg-green-neon text-navy-space text-[10px] font-black px-3 py-1 shadow-[0_0_10px_#39FF14]">NEW
+                            UNIT</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3
+                                class="text-xl font-black italic uppercase tracking-tighter group-hover:text-cyan-neon transition-colors">
+                                Neon Drone</h3>
+                            <span class="text-[10px] font-mono text-cyan-neon/40">v2.4.1</span>
+                        </div>
+                        <p class="text-cyan-neon/50 text-xs font-mono mb-6 leading-relaxed uppercase">Compact flight
+                            core with stability matrix control.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold font-mono text-cyan-neon text-glow-cyan">$49.99</span>
+                            <div class="flex text-magenta-neon gap-0.5">
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                                <span class="material-symbols-outlined text-xs">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full border border-cyan-neon text-cyan-neon font-black text-xs tracking-[0.2em] uppercase py-4 hover:bg-cyan-neon hover:text-navy-space transition-all hover:shadow-[0_0_20px_#00F0FF]">
+                        Initialize Kit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6 border-y border-cyan-neon/10">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-4xl font-black italic uppercase tracking-tighter text-glow-cyan">System Comparison</h2>
+                <div class="h-px flex-grow bg-gradient-to-r from-cyan-neon/50 to-transparent"></div>
+            </div>
+            <div class="overflow-x-auto glass-card">
+                <table class="w-full text-left font-mono text-xs uppercase tracking-wider">
+                    <thead>
+                        <tr class="bg-cyan-neon/10 border-b border-cyan-neon/30">
+                            <th class="px-8 py-6 font-black text-cyan-neon">Kit Identifier</th>
+                            <th class="px-8 py-6 font-black text-cyan-neon">Price (USD)</th>
+                            <th class="px-8 py-6 font-black text-cyan-neon">Target Age</th>
+                            <th class="px-8 py-6 font-black text-cyan-neon">Difficulty</th>
+                            <th class="px-8 py-6 font-black text-cyan-neon">Primary Logic</th>
+                            <th class="px-8 py-6 font-black text-cyan-neon text-center">Comp Ready</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-cyan-neon/10">
+                        <tr class="hover:bg-cyan-neon/5 transition-colors">
+                            <td class="px-8 py-6 font-bold">Robot Car</td>
+                            <td class="px-8 py-6 text-cyan-neon">$40.10</td>
+                            <td class="px-8 py-6">10+</td>
+                            <td class="px-8 py-6"><span class="text-green-neon">[ BEGINNER ]</span></td>
+                            <td class="px-8 py-6 text-white/60">C++, LOGIC GATES</td>
+                            <td class="px-8 py-6 text-center text-green-neon"><span
+                                    class="material-symbols-outlined shadow-[0_0_10px_#39FF14]">check_circle</span></td>
+                        </tr>
+                        <tr class="hover:bg-cyan-neon/5 transition-colors">
+                            <td class="px-8 py-6 font-bold">Anti-Air Gun</td>
+                            <td class="px-8 py-6 text-cyan-neon">$45.50</td>
+                            <td class="px-8 py-6">12+</td>
+                            <td class="px-8 py-6"><span class="text-cyan-neon">[ MID-RANGE ]</span></td>
+                            <td class="px-8 py-6 text-white/60">RADAR, PWM MOTORS</td>
+                            <td class="px-8 py-6 text-center text-green-neon"><span
+                                    class="material-symbols-outlined shadow-[0_0_10px_#39FF14]">check_circle</span></td>
+                        </tr>
+                        <tr class="hover:bg-cyan-neon/5 transition-colors">
+                            <td class="px-8 py-6 font-bold">Titan Arm</td>
+                            <td class="px-8 py-6 text-cyan-neon">$55.00</td>
+                            <td class="px-8 py-6">14+</td>
+                            <td class="px-8 py-6"><span class="text-magenta-neon">[ ADVANCED ]</span></td>
+                            <td class="px-8 py-6 text-white/60">KINEMATICS, SERIAL</td>
+                            <td class="px-8 py-6 text-center text-green-neon"><span
+                                    class="material-symbols-outlined shadow-[0_0_10px_#39FF14]">check_circle</span></td>
+                        </tr>
+                        <tr class="hover:bg-cyan-neon/5 transition-colors">
+                            <td class="px-8 py-6 font-bold">Water Automata</td>
+                            <td class="px-8 py-6 text-cyan-neon">$35.20</td>
+                            <td class="px-8 py-6">08+</td>
+                            <td class="px-8 py-6"><span class="text-green-neon">[ BEGINNER ]</span></td>
+                            <td class="px-8 py-6 text-white/60">SENSOR ARRAYS</td>
+                            <td class="px-8 py-6 text-center text-white/20"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 grid-bg opacity-10"></div>
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black italic uppercase tracking-tighter text-glow-cyan mb-4">Core Components
+                    Payload</h2>
+                <p class="text-cyan-neon/50 font-mono text-sm max-w-xl mx-auto uppercase">Every unit ships with a full
+                    tactical hardware and software suite.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-10 flex flex-col items-center text-center border-l-4 border-l-cyan-neon group">
+                    <div
+                        class="w-16 h-16 bg-cyan-neon/10 text-cyan-neon rounded-none border border-cyan-neon flex items-center justify-center mb-6 group-hover:shadow-[0_0_15px_#00F0FF] transition-all">
+                        <span class="material-symbols-outlined text-3xl">precision_manufacturing</span>
+                    </div>
+                    <h3 class="font-black text-lg mb-2 italic uppercase tracking-tighter">Hardware Tier 1</h3>
+                    <p class="text-cyan-neon/40 font-mono text-[10px] leading-relaxed uppercase">Micro-controllers,
+                        wiring matrix, and precision alloy fasteners included.</p>
+                </div>
+                <div
+                    class="glass-card p-10 flex flex-col items-center text-center border-l-4 border-l-magenta-neon group">
+                    <div
+                        class="w-16 h-16 bg-magenta-neon/10 text-magenta-neon rounded-none border border-magenta-neon flex items-center justify-center mb-6 group-hover:shadow-[0_0_15px_#FF00E5] transition-all">
+                        <span class="material-symbols-outlined text-3xl">terminal</span>
+                    </div>
+                    <h3 class="font-black text-lg mb-2 italic uppercase tracking-tighter">Code Manual</h3>
+                    <p class="text-magenta-neon/40 font-mono text-[10px] leading-relaxed uppercase">High-res encrypted
+                        technical blueprints and syntax guidelines.</p>
+                </div>
+                <div class="glass-card p-10 flex flex-col items-center text-center border-l-4 border-l-cyan-neon group">
+                    <div
+                        class="w-16 h-16 bg-cyan-neon/10 text-cyan-neon rounded-none border border-cyan-neon flex items-center justify-center mb-6 group-hover:shadow-[0_0_15px_#00F0FF] transition-all">
+                        <span class="material-symbols-outlined text-3xl">videocam</span>
+                    </div>
+                    <h3 class="font-black text-lg mb-2 italic uppercase tracking-tighter">Net Access</h3>
+                    <p class="text-cyan-neon/40 font-mono text-[10px] leading-relaxed uppercase">24/7 uplink to premium
+                        encrypted video briefing platform.</p>
+                </div>
+                <div
+                    class="glass-card p-10 flex flex-col items-center text-center border-l-4 border-l-green-neon group">
+                    <div
+                        class="w-16 h-16 bg-green-neon/10 text-green-neon rounded-none border border-green-neon flex items-center justify-center mb-6 group-hover:shadow-[0_0_15px_#39FF14] transition-all">
+                        <span class="material-symbols-outlined text-3xl">trophy</span>
+                    </div>
+                    <h3 class="font-black text-lg mb-2 italic uppercase tracking-tighter">Arena Ready</h3>
+                    <p class="text-green-neon/40 font-mono text-[10px] leading-relaxed uppercase">Standardized protocols
+                        for international bot-fighting leagues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 px-6">
+        <div class="max-w-[1400px] mx-auto relative group">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-cyan-neon via-magenta-neon to-magenta-neon rounded-none blur-xl opacity-20 group-hover:opacity-40 transition-opacity">
+            </div>
+            <div class="relative bg-gradient-to-r from-cyan-neon via-[#6E00FF] to-magenta-neon p-1 w-full">
+                <div class="bg-navy-space p-12 relative overflow-hidden">
+                    <div class="absolute inset-0 circuit-pattern"></div>
+                    <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+                        <div class="text-center lg:text-left">
+                            <h2
+                                class="text-white text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4">
+                                Empower Your Network</h2>
+                            <p class="text-cyan-neon font-mono text-sm max-w-xl uppercase">Special bulk deployment
+                                protocols for schools and academies. Secure your institution's tech lead.</p>
+                        </div>
+                        <button
+                            class="bg-white text-navy-space px-12 py-5 font-black uppercase tracking-tighter shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-all">
+                            Request Bulk Protocol
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-navy-space py-24 px-6 border-t border-cyan-neon/20">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2 text-white mb-8">
+                        <img src="logo.svg" alt="CodingInABox" class="h-10 w-auto" />
+                    </div>
+                    <p class="text-xs font-mono text-cyan-neon/40 leading-relaxed mb-8 uppercase">Manufacturing
+                        tomorrow's neural links. Leading the global EdTech hardware rebellion since 20XX.</p>
+                    <div class="flex gap-4">
+                        <a class="w-10 h-10 border border-cyan-neon/20 flex items-center justify-center text-cyan-neon hover:border-cyan-neon hover:text-white transition-all"
+                            href="product-detail.html"><span
+                                class="material-symbols-outlined text-sm">terminal</span></a>
+                        <a class="w-10 h-10 border border-cyan-neon/20 flex items-center justify-center text-cyan-neon hover:border-cyan-neon hover:text-white transition-all"
+                            href="product-detail.html"><span
+                                class="material-symbols-outlined text-sm">wifi_channel</span></a>
+                        <a class="w-10 h-10 border border-cyan-neon/20 flex items-center justify-center text-cyan-neon hover:border-cyan-neon hover:text-white transition-all"
+                            href="product-detail.html"><span
+                                class="material-symbols-outlined text-sm">sensors</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-cyan-neon font-black italic uppercase tracking-widest text-xs mb-8">Hardware</h4>
+                    <ul class="space-y-4 font-mono text-[10px] text-cyan-neon/60 uppercase">
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Standard
+                                Units</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Alpha
+                                Projects</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Sensor
+                                Modules</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Subsystems</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cyan-neon font-black italic uppercase tracking-widest text-xs mb-8">Directives</h4>
+                    <ul class="space-y-4 font-mono text-[10px] text-cyan-neon/60 uppercase">
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Protocol
+                                Guide</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Admin
+                                Uplink</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Workshops</a>
+                        </li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Encrypted
+                                Funds</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-cyan-neon font-black italic uppercase tracking-widest text-xs mb-8">Support</h4>
+                    <ul class="space-y-4 font-mono text-[10px] text-cyan-neon/60 uppercase">
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Comms
+                                Center</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Logistics</a>
+                        </li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Security
+                                Policy</a></li>
+                        <li><a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Signal Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-10 border-t border-cyan-neon/10 flex flex-col md:row items-center justify-between gap-6 font-mono text-[9px] uppercase tracking-widest text-cyan-neon/30">
+                <p>© 2024 CodingInABox / Hard-coded for excellence.</p>
+                <div class="flex gap-8">
+                    <a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Operational Terms</a>
+                    <a class="hover:text-cyan-neon transition-colors" href="product-detail.html">Neural Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

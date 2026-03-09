@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contact | CodingInABox — Build. Code. Compete.</title>
+    <meta name="description"
+        content="Get in touch with CodingInABox. Questions about STEM kits, courses, competitions, or partnerships? We're here to help.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base { body { @apply bg-[#050B1A] text-slate-100 antialiased overflow-x-hidden; } }
+:root { --neon-cyan: #00F0FF; --neon-magenta: #FF00E5; --deep-navy: #050B1A; --glass-bg: rgba(10, 22, 40, 0.8); }
+.cyber-grid{background-image:linear-gradient(to right,rgba(0,240,255,0.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,240,255,0.06) 1px,transparent 1px);background-size:50px 50px}
+.glass-nav{background:rgba(5,11,26,0.95);backdrop-filter:blur(24px);border-bottom:2px solid var(--neon-cyan);box-shadow:0 4px 30px rgba(0,240,255,0.15),0 1px 0 rgba(0,240,255,0.3)}
+.logo-animated{animation:logoFloat 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(230,27,121,0.3));transition:filter .3s ease,transform .3s ease}
+.logo-animated:hover{filter:drop-shadow(0 4px 16px rgba(230,27,121,0.5));transform:scale(1.05)}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.neon-text-cyan{text-shadow:0 0 10px rgba(0,240,255,0.7),0 0 20px rgba(0,240,255,0.4)}
+.neon-text-magenta{text-shadow:0 0 10px rgba(255,0,229,0.7),0 0 20px rgba(255,0,229,0.4)}
+.cta-cyber{background:linear-gradient(90deg,#00F0FF 0%,#A855F7 50%,#FF00E5 100%);box-shadow:0 0 15px rgba(0,240,255,0.4);transition:all .3s ease}
+.cta-cyber:hover{box-shadow:0 0 25px rgba(255,0,229,0.6);transform:scale(1.05)}
+.dark-glass{background:var(--glass-bg);backdrop-filter:blur(12px);border:1px solid rgba(0,240,255,0.2);transition:all .3s ease}
+.dark-glass:hover{border-color:var(--neon-cyan);box-shadow:0 0 20px rgba(0,240,255,0.2)}
+.mono-font{font-family:'JetBrains Mono',monospace}
+.circuit-overlay{background-image:radial-gradient(var(--neon-cyan) .5px,transparent .5px);background-size:20px 20px;opacity:.15}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--neon-cyan)!important;box-shadow:0 0 15px rgba(0,240,255,0.15)!important}
+</style>
+</head>
+
+<body class="font-['Inter',sans-serif]">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" /></a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="index.html">Home</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="products.html">Kits</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="courses.html">Courses</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="about.html">About</a>
+                <a class="text-sm font-medium text-[var(--neon-cyan)]" href="contact.html">Contact</a>
+            </div>
+            <a href="contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
+                Started</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-[50vh] flex items-center pt-20 overflow-hidden bg-[#050B1A] cyber-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050B1A]"></div>
+        <div class="max-w-[1400px] mx-auto px-6 text-center relative z-10 py-20">
+            <div
+                class="inline-block px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                Comms Uplink // Open Channel</div>
+            <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-none mb-6 neon-text-cyan">Contact <span
+                    class="neon-text-magenta">Us</span></h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto">Questions about kits, courses, competitions, or
+                partnerships? Open a channel and we'll respond within 24 hours.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM + INFO -->
+    <section class="py-20 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16">
+            <!-- FORM -->
+            <div class="dark-glass p-10 rounded-sm">
+                <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-wider">Send a Message</h2>
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label
+                                class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">First
+                                Name</label>
+                            <input type="text"
+                                class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all"
+                                placeholder="Enter first name">
+                        </div>
+                        <div>
+                            <label
+                                class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Last
+                                Name</label>
+                            <input type="text"
+                                class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all"
+                                placeholder="Enter last name">
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Email</label>
+                        <input type="email"
+                            class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all"
+                            placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label
+                            class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Subject</label>
+                        <select
+                            class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all">
+                            <option value="">Select a topic...</option>
+                            <option>STEM Kit Purchase</option>
+                            <option>Course Enrollment</option>
+                            <option>Competition Registration</option>
+                            <option>School Partnership</option>
+                            <option>Sponsorship Inquiry</option>
+                            <option>Technical Support</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Message</label>
+                        <textarea rows="5"
+                            class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all resize-none"
+                            placeholder="Describe your inquiry..."></textarea>
+                    </div>
+                    <button type="submit"
+                        class="cta-cyber text-white w-full py-4 rounded-sm font-bold text-sm uppercase tracking-widest">Transmit
+                        Message</button>
+                </form>
+            </div>
+            <!-- INFO -->
+            <div class="space-y-8">
+                <div class="dark-glass p-8 rounded-sm">
+                    <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider">Quick Connect</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-[var(--neon-cyan)] text-xl mt-1">mail</span>
+                            <div>
+                                <p class="text-sm font-bold text-white">Email</p>
+                                <p class="text-sm text-slate-400 mono-font">hello@codinginabox.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-[var(--neon-cyan)] text-xl mt-1">phone</span>
+                            <div>
+                                <p class="text-sm font-bold text-white">Phone</p>
+                                <p class="text-sm text-slate-400 mono-font">+1 (555) 012-3456</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="material-symbols-outlined text-[var(--neon-cyan)] text-xl mt-1">location_on</span>
+                            <div>
+                                <p class="text-sm font-bold text-white">Location</p>
+                                <p class="text-sm text-slate-400">Remote — Global Operations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-[var(--neon-cyan)] text-xl mt-1">schedule</span>
+                            <div>
+                                <p class="text-sm font-bold text-white">Hours</p>
+                                <p class="text-sm text-slate-400">Mon-Fri: 08:00 - 17:00 (UTC+2)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- QUICK HELP -->
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="products.html" class="dark-glass p-6 rounded-sm text-center group"><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl mb-2 block group-hover:scale-110 transition-transform">shopping_cart</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider">Buy a Kit</p>
+                    </a>
+                    <a href="courses.html" class="dark-glass p-6 rounded-sm text-center group"><span
+                            class="material-symbols-outlined text-[var(--neon-magenta)] text-2xl mb-2 block group-hover:scale-110 transition-transform">school</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider">Enroll in Course</p>
+                    </a>
+                    <a href="competitions.html" class="dark-glass p-6 rounded-sm text-center group"><span
+                            class="material-symbols-outlined text-purple-400 text-2xl mb-2 block group-hover:scale-110 transition-transform">trophy</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider">Join Competition</p>
+                    </a>
+                    <a href="sponsorship.html" class="dark-glass p-6 rounded-sm text-center group"><span
+                            class="material-symbols-outlined text-yellow-400 text-2xl mb-2 block group-hover:scale-110 transition-transform">handshake</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider">Become Sponsor</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 px-6 bg-[#020617] border-t border-[var(--neon-cyan)]/20">
+        <div class="max-w-[800px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight text-center">FAQ
+            </h2>
+            <div class="space-y-4">
+                <details class="dark-glass rounded-sm group">
+                    <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-white text-sm">
+                        <span>Do you ship internationally?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">Yes! We
+                        offer worldwide shipping. Contact us for shipping rates to your region.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-white text-sm">
+                        <span>Can my school get bulk pricing?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">Yes!
+                        Schools get 20-40% off depending on quantity. Contact us with "School Partnership" for a custom
+                        quote.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-white text-sm">
+                        <span>What support do you offer after purchase?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">Every kit
+                        includes free online course access, community forum support, and email technical support. Pro
+                        tier members get 1-on-1 mentor sessions.</div>
+                </details>
+                <details class="dark-glass rounded-sm group">
+                    <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-white text-sm">
+                        <span>How do competitions work?</span><span
+                            class="material-symbols-outlined text-[var(--neon-cyan)] group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 text-sm border-t border-[var(--neon-cyan)]/10 pt-4">Register
+                        your team, build your bot to competition specs, and attend quarterly events. See our <a
+                            href="competitions.html" class="text-[var(--neon-cyan)] hover:underline">Competitions
+                            page</a> for full details.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#020611] pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-[300px] cyber-grid opacity-10 pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 relative z-10">
+            <div><a href="index.html" class="flex items-center gap-2 mb-8">
+                    <img src="logo.svg" alt="CodingInABox" class="h-10 w-auto" /></a>
+                <p class="text-slate-500 text-xs mono-font uppercase leading-relaxed tracking-tighter">> Leading STEM
+                    ecosystem since 2026.</p>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Archive</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="about.html">About</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="products.html">Kits</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="competitions.html">Competitions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Nodes</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="courses.html">Courses</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="sponsorship.html">Sponsors</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Protocols</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="#">Privacy</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-[1400px] mx-auto px-6 pt-12 border-t border-[var(--neon-cyan)]/20 text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em] relative z-10">
+            <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

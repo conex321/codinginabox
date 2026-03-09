@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Courses | CodingInABox — Build. Code. Compete.</title>
+    <meta name="description"
+        content="Learn robotics, coding, and engineering with CodingInABox online and offline courses. From beginner to advanced.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base { body { @apply bg-[#050B1A] text-slate-100 antialiased overflow-x-hidden; } }
+:root { --neon-cyan: #00F0FF; --neon-magenta: #FF00E5; --deep-navy: #050B1A; --glass-bg: rgba(10, 22, 40, 0.8); }
+.cyber-grid{background-image:linear-gradient(to right,rgba(0,240,255,0.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,240,255,0.06) 1px,transparent 1px);background-size:50px 50px}
+.glass-nav{background:rgba(5,11,26,0.95);backdrop-filter:blur(24px);border-bottom:2px solid var(--neon-cyan);box-shadow:0 4px 30px rgba(0,240,255,0.15),0 1px 0 rgba(0,240,255,0.3)}
+.logo-animated{animation:logoFloat 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(230,27,121,0.3));transition:filter .3s ease,transform .3s ease}
+.logo-animated:hover{filter:drop-shadow(0 4px 16px rgba(230,27,121,0.5));transform:scale(1.05)}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.neon-text-cyan{text-shadow:0 0 10px rgba(0,240,255,0.7),0 0 20px rgba(0,240,255,0.4)}
+.neon-text-magenta{text-shadow:0 0 10px rgba(255,0,229,0.7),0 0 20px rgba(255,0,229,0.4)}
+.cta-cyber{background:linear-gradient(90deg,#00F0FF 0%,#A855F7 50%,#FF00E5 100%);box-shadow:0 0 15px rgba(0,240,255,0.4);transition:all .3s ease}
+.cta-cyber:hover{box-shadow:0 0 25px rgba(255,0,229,0.6);transform:scale(1.05)}
+.dark-glass{background:var(--glass-bg);backdrop-filter:blur(12px);border:1px solid rgba(0,240,255,0.2);transition:all .3s ease}
+.dark-glass:hover{border-color:var(--neon-cyan);box-shadow:0 0 20px rgba(0,240,255,0.2)}
+.mono-font{font-family:'JetBrains Mono',monospace}
+.circuit-overlay{background-image:radial-gradient(var(--neon-cyan) .5px,transparent .5px);background-size:20px 20px;opacity:.15}
+</style>
+</head>
+
+<body class="font-['Inter',sans-serif]">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" /></a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="index.html">Home</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="products.html">Kits</a>
+                <a class="text-sm font-medium text-[var(--neon-cyan)]" href="courses.html">Courses</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="about.html">About</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+                    href="contact.html">Contact</a>
+            </div>
+            <a href="contact.html"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
+                Started</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-[60vh] flex items-center pt-20 overflow-hidden bg-[#050B1A] cyber-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050B1A]"></div>
+        <div class="max-w-[1400px] mx-auto px-6 text-center relative z-10 py-24">
+            <div
+                class="inline-block px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                10+ Active Modules // Updated Q1 2026</div>
+            <h1 class="text-5xl lg:text-8xl font-extrabold text-white leading-none mb-6 neon-text-cyan">
+                Knowledge<br /><span class="neon-text-magenta">Modules</span></h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">From zero-code novice to autonomous
+                systems engineer. Professional-grade training paths for every skill level.</p>
+        </div>
+    </section>
+
+    <!-- FORMATS -->
+    <section class="py-16 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/20">
+        <div class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8">
+            <div class="dark-glass p-8 rounded-sm text-center"><span
+                    class="material-symbols-outlined text-[var(--neon-cyan)] text-4xl mb-4 block">laptop</span>
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Online</h3>
+                <p class="text-sm text-slate-400">Self-paced video modules with interactive coding labs. Learn anywhere,
+                    anytime.</p>
+            </div>
+            <div class="dark-glass p-8 rounded-sm text-center"><span
+                    class="material-symbols-outlined text-[var(--neon-magenta)] text-4xl mb-4 block">school</span>
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">In-Person</h3>
+                <p class="text-sm text-slate-400">Hands-on workshops at partner schools and community centers near you.
+                </p>
+            </div>
+            <div class="dark-glass p-8 rounded-sm text-center"><span
+                    class="material-symbols-outlined text-purple-400 text-4xl mb-4 block">hub</span>
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Hybrid</h3>
+                <p class="text-sm text-slate-400">Combine online theory with in-person build sessions. Best of both
+                    worlds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE CATALOG -->
+    <section class="py-20 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight">Course Catalog
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="dark-glass p-8 rounded-sm border-l-4 border-l-green-400 group hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between mb-4"><span
+                            class="text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold">Beginner</span><span
+                            class="text-[10px] mono-font text-slate-500">12 hrs</span></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Robotics Foundations</h3>
+                    <p class="text-sm text-slate-400 mb-6">Master electronics basics, soldering, and introductory
+                        Arduino programming.</p>
+                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
+                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                </div>
+                <div
+                    class="dark-glass p-8 rounded-sm border-l-4 border-l-green-400 group hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between mb-4"><span
+                            class="text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold">Beginner</span><span
+                            class="text-[10px] mono-font text-slate-500">8 hrs</span></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Python for Hardware</h3>
+                    <p class="text-sm text-slate-400 mb-6">Learn Python basics with direct application to sensor control
+                        and motor logic.</p>
+                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
+                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                </div>
+                <div
+                    class="dark-glass p-8 rounded-sm border-l-4 border-l-yellow-400 group hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between mb-4"><span
+                            class="text-[10px] mono-font text-yellow-400 uppercase tracking-widest font-bold">Intermediate</span><span
+                            class="text-[10px] mono-font text-slate-500">24 hrs</span></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Autonomous Logic</h3>
+                    <p class="text-sm text-slate-400 mb-6">PID control, sensor fusion, and advanced autonomous
+                        navigation algorithms.</p>
+                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
+                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                </div>
+                <div
+                    class="dark-glass p-8 rounded-sm border-l-4 border-l-yellow-400 group hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between mb-4"><span
+                            class="text-[10px] mono-font text-yellow-400 uppercase tracking-widest font-bold">Intermediate</span><span
+                            class="text-[10px] mono-font text-slate-500">16 hrs</span></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Drone Flight Systems</h3>
+                    <p class="text-sm text-slate-400 mb-6">Understand quadcopter physics, PID tuning, and autonomous
+                        waypoint navigation.</p>
+                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
+                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                </div>
+                <div
+                    class="dark-glass p-8 rounded-sm border-l-4 border-l-red-400 group hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between mb-4"><span
+                            class="text-[10px] mono-font text-red-400 uppercase tracking-widest font-bold">Advanced</span><span
+                            class="text-[10px] mono-font text-slate-500">40 hrs</span></div>
+                    <h3 class="text-xl font-bold text-white mb-3">AI Vision & Systems</h3>
+                    <p class="text-sm text-slate-400 mb-6">Integrate computer vision, object detection, and neural
+                        networks into your robot.</p>
+                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
+                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                </div>
+                <div
+                    class="dark-glass p-8 rounded-sm border-l-4 border-l-red-400 group hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between mb-4"><span
+                            class="text-[10px] mono-font text-red-400 uppercase tracking-widest font-bold">Advanced</span><span
+                            class="text-[10px] mono-font text-slate-500">32 hrs</span></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Competition Mastery</h3>
+                    <p class="text-sm text-slate-400 mb-6">Tournament strategy, speed optimization, and advanced
+                        debugging for competitive robotics.</p>
+                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
+                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="py-20 px-6 bg-[#020617]">
+        <div class="max-w-[1200px] mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight text-center">
+                Access Tiers</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="dark-glass p-10 rounded-sm text-center">
+                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Free Tier</h3>
+                    <p class="text-4xl mono-font font-bold text-[var(--neon-cyan)] neon-text-cyan mb-4">R0</p>
+                    <p class="text-xs text-slate-400 mb-8">Access to 3 beginner modules</p>
+                    <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left">
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>3 Beginner courses
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Community forum
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-slate-600 text-sm">close</span>Certificate</li>
+                    </ul>
+                    <button
+                        class="w-full border border-[var(--neon-cyan)] text-[var(--neon-cyan)] py-3 font-bold uppercase tracking-widest text-xs hover:bg-[var(--neon-cyan)] hover:text-[#050B1A] transition-all">Get
+                        Started</button>
+                </div>
+                <div
+                    class="dark-glass p-10 rounded-sm text-center border-2 border-[var(--neon-cyan)] shadow-[0_0_30px_rgba(0,240,255,0.15)] relative">
+                    <div
+                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--neon-cyan)] text-[#050B1A] text-[10px] font-bold uppercase tracking-widest px-4 py-1">
+                        Most Popular</div>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Pro Tier</h3>
+                    <p class="text-4xl mono-font font-bold text-[var(--neon-cyan)] neon-text-cyan mb-4">R499<span
+                            class="text-lg">/mo</span></p>
+                    <p class="text-xs text-slate-400 mb-8">Full access to all courses</p>
+                    <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left">
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>All 10+ courses
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Certificates</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>1-on-1 mentoring
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full cta-cyber text-white py-3 font-bold uppercase tracking-widest text-xs">Subscribe</button>
+                </div>
+                <div class="dark-glass p-10 rounded-sm text-center">
+                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">School Tier</h3>
+                    <p class="text-4xl mono-font font-bold text-[var(--neon-magenta)] neon-text-magenta mb-4">Custom</p>
+                    <p class="text-xs text-slate-400 mb-8">Bulk licensing for institutions</p>
+                    <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left">
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>All courses + admin
+                            panel</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Teacher training
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Priority support
+                        </li>
+                    </ul>
+                    <a href="contact.html"
+                        class="w-full block border border-[var(--neon-magenta)] text-[var(--neon-magenta)] py-3 font-bold uppercase tracking-widest text-xs hover:bg-[var(--neon-magenta)] hover:text-white transition-all text-center">Contact
+                        Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#020611] pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-[300px] cyber-grid opacity-10 pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 relative z-10">
+            <div><a href="index.html" class="flex items-center gap-2 mb-8">
+                    <img src="logo.svg" alt="CodingInABox" class="h-10 w-auto" /></a>
+                <p class="text-slate-500 text-xs mono-font uppercase leading-relaxed tracking-tighter">> Leading STEM
+                    ecosystem since 2026.</p>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Archive</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="about.html">About</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="products.html">Kits</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="competitions.html">Competitions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Nodes</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="courses.html">Courses</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="sponsorship.html">Sponsors</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+                    Protocols</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="#">Privacy</a></li>
+                    <li><a class="hover:text-[var(--neon-cyan)]" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-[1400px] mx-auto px-6 pt-12 border-t border-[var(--neon-cyan)]/20 text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em] relative z-10">
+            <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

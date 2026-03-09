@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Competitions | CodingInABox — Build. Code. Compete.</title>
+  <meta name="description"
+    content="Join CodingInABox robotics competitions - drone races, robot car challenges, and sumo combat tournaments.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <style type="text/tailwindcss">
+    @layer base { body { @apply bg-[#050B1A] text-slate-100 antialiased overflow-x-hidden; } }
+:root { --neon-cyan: #00F0FF; --neon-magenta: #FF00E5; --deep-navy: #050B1A; --glass-bg: rgba(10, 22, 40, 0.8); }
+.cyber-grid { background-image: linear-gradient(to right, rgba(0,240,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,240,255,0.06) 1px, transparent 1px); background-size: 50px 50px; }
+.glass-nav { background: rgba(5,11,26,0.95); backdrop-filter: blur(24px); border-bottom: 2px solid var(--neon-cyan); box-shadow: 0 4px 30px rgba(0,240,255,0.15), 0 1px 0 rgba(0,240,255,0.3); }
+.logo-animated { animation: logoFloat 3s ease-in-out infinite; filter: drop-shadow(0 2px 8px rgba(230,27,121,0.3)); transition: filter 0.3s ease, transform 0.3s ease; }
+.logo-animated:hover { filter: drop-shadow(0 4px 16px rgba(230,27,121,0.5)); transform: scale(1.05); }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.neon-text-cyan { text-shadow: 0 0 10px rgba(0,240,255,0.7), 0 0 20px rgba(0,240,255,0.4); }
+.neon-text-magenta { text-shadow: 0 0 10px rgba(255,0,229,0.7), 0 0 20px rgba(255,0,229,0.4); }
+.cta-cyber { background: linear-gradient(90deg, #00F0FF 0%, #A855F7 50%, #FF00E5 100%); box-shadow: 0 0 15px rgba(0,240,255,0.4); transition: all 0.3s ease; }
+.cta-cyber:hover { box-shadow: 0 0 25px rgba(255,0,229,0.6); transform: scale(1.05); }
+.dark-glass { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid rgba(0,240,255,0.2); transition: all 0.3s ease; }
+.dark-glass:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,240,255,0.2); }
+.mono-font { font-family: 'JetBrains Mono', monospace; }
+.circuit-overlay { background-image: radial-gradient(var(--neon-cyan) 0.5px, transparent 0.5px); background-size: 20px 20px; opacity: 0.15; }
+</style>
+</head>
+
+<body class="font-['Inter',sans-serif]">
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo.svg" alt="CodingInABox" class="h-20 w-auto logo-animated" /></a>
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+          href="index.html">Home</a>
+        <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+          href="products.html">Kits</a>
+        <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+          href="courses.html">Courses</a>
+        <a class="text-sm font-medium text-[var(--neon-cyan)]" href="competitions.html">Competitions</a>
+        <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+          href="about.html">About</a>
+        <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
+          href="contact.html">Contact</a>
+      </div>
+      <a href="contact.html"
+        class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
+        Started</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-[70vh] flex items-center pt-20 overflow-hidden bg-[#050B1A] cyber-grid">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1A]/30 to-[#050B1A]"></div>
+    <div class="max-w-[1400px] mx-auto px-6 text-center relative z-10 py-24">
+      <div
+        class="inline-block px-3 py-1 bg-[var(--neon-magenta)]/10 border border-[var(--neon-magenta)]/30 text-[var(--neon-magenta)] text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+        Season 2026 // Active Arena</div>
+      <h1 class="text-5xl lg:text-8xl font-extrabold text-white leading-none mb-6"><span
+          class="neon-text-magenta">Combat</span> <span class="neon-text-cyan">Arena</span></h1>
+      <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Drone races, robot car challenges, and
+        engineering combat tournaments.</p>
+    </div>
+  </section>
+
+  <!-- DRONE COMPETITIONS -->
+  <section class="py-20 px-6 bg-[#020617]">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex items-center gap-4 mb-12">
+        <span class="material-symbols-outlined text-[var(--neon-magenta)] text-3xl">flight</span>
+        <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight neon-text-magenta">Drone Competitions
+        </h2>
+        <div class="h-px flex-grow bg-gradient-to-r from-[var(--neon-magenta)]/50 to-transparent"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div
+          class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)] group hover:bg-[var(--neon-magenta)]/5">
+          <span
+            class="mono-font text-[var(--neon-magenta)] text-xs tracking-widest font-bold block mb-4">B1_Protocol</span>
+          <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-wider">Drone Flight</h3>
+          <p class="text-sm text-slate-400 mb-6">Manual precision flight through obstacle courses. No coding required —
+            master throttle, pitch and yaw control.</p>
+          <div class="flex items-center gap-2 text-[10px] mono-font text-[var(--neon-magenta)]/60 uppercase"><span
+              class="material-symbols-outlined text-sm">group</span>Solo or Team</div>
+        </div>
+        <div
+          class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)] group hover:bg-[var(--neon-magenta)]/5">
+          <span
+            class="mono-font text-[var(--neon-magenta)] text-xs tracking-widest font-bold block mb-4">B2_Protocol</span>
+          <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-wider">Coded Drone Flight</h3>
+          <p class="text-sm text-slate-400 mb-6">Program autonomous waypoint navigation. Highest accuracy and fastest
+            completion wins.</p>
+          <div class="flex items-center gap-2 text-[10px] mono-font text-[var(--neon-magenta)]/60 uppercase"><span
+              class="material-symbols-outlined text-sm">code</span>Python Required</div>
+        </div>
+        <div
+          class="dark-glass p-8 rounded-sm border-t-2 border-t-[var(--neon-magenta)] group hover:bg-[var(--neon-magenta)]/5">
+          <span
+            class="mono-font text-[var(--neon-magenta)] text-xs tracking-widest font-bold block mb-4">B3_Protocol</span>
+          <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-wider">Beam Speeder Race</h3>
+          <p class="text-sm text-slate-400 mb-6">High-speed racing through neon-lit beam gates. Combine manual control
+            with coded assist modules.</p>
+          <div class="flex items-center gap-2 text-[10px] mono-font text-[var(--neon-magenta)]/60 uppercase"><span
+              class="material-symbols-outlined text-sm">speed</span>Time-based Scoring</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROBOT CAR COMPETITIONS -->
+  <section class="py-20 px-6 bg-[#050B1A]">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex items-center gap-4 mb-12">
+        <span class="material-symbols-outlined text-[var(--neon-cyan)] text-3xl">directions_car</span>
+        <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight neon-text-cyan">Robot Car Competitions
+        </h2>
+        <div class="h-px flex-grow bg-gradient-to-r from-[var(--neon-cyan)]/50 to-transparent"></div>
+      </div>
+      <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div
+          class="dark-glass p-8 rounded-sm border-l-4 border-l-[var(--neon-cyan)] group hover:bg-[var(--neon-cyan)]/5">
+          <span class="mono-font text-[var(--neon-cyan)] text-xs tracking-widest font-bold block mb-3">C1</span>
+          <h3 class="text-lg font-bold text-white mb-2 uppercase">Pick & Place</h3>
+          <p class="text-xs text-slate-400">Autonomous object retrieval and precise placement challenges.</p>
+        </div>
+        <div
+          class="dark-glass p-8 rounded-sm border-l-4 border-l-[var(--neon-cyan)] group hover:bg-[var(--neon-cyan)]/5">
+          <span class="mono-font text-[var(--neon-cyan)] text-xs tracking-widest font-bold block mb-3">C2</span>
+          <h3 class="text-lg font-bold text-white mb-2 uppercase">Speed Run</h3>
+          <p class="text-xs text-slate-400">Line-following and beam-tracking at maximum velocity.</p>
+        </div>
+        <div
+          class="dark-glass p-8 rounded-sm border-l-4 border-l-[var(--neon-cyan)] group hover:bg-[var(--neon-cyan)]/5">
+          <span class="mono-font text-[var(--neon-cyan)] text-xs tracking-widest font-bold block mb-3">C3</span>
+          <h3 class="text-lg font-bold text-white mb-2 uppercase">NatCar</h3>
+          <p class="text-xs text-slate-400">Navigation-autonomous technology challenge on unknown tracks.</p>
+        </div>
+        <div
+          class="dark-glass p-8 rounded-sm border-l-4 border-l-[var(--neon-magenta)] group hover:bg-[var(--neon-magenta)]/5">
+          <span class="mono-font text-[var(--neon-magenta)] text-xs tracking-widest font-bold block mb-3">C4</span>
+          <h3 class="text-lg font-bold text-white mb-2 uppercase">Sumo Combat</h3>
+          <p class="text-xs text-slate-400">Push your opponent out of the ring. Strategy meets raw power.</p>
+        </div>
+        <div
+          class="dark-glass p-8 rounded-sm border-l-4 border-l-[var(--neon-magenta)] group hover:bg-[var(--neon-magenta)]/5">
+          <span class="mono-font text-[var(--neon-magenta)] text-xs tracking-widest font-bold block mb-3">C5</span>
+          <h3 class="text-lg font-bold text-white mb-2 uppercase">Soccer Bot</h3>
+          <p class="text-xs text-slate-400">Team-based robotic soccer with autonomous coordination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ENTER -->
+  <section class="py-20 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/20">
+    <div class="max-w-[1400px] mx-auto text-center">
+      <h2 class="text-3xl font-extrabold text-white mb-16 neon-text-cyan uppercase tracking-tight">How To Enter</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="relative">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+            <span class="mono-font text-[var(--neon-cyan)] text-xl font-bold">01</span>
+          </div>
+          <h3 class="font-bold text-white uppercase text-sm mb-2">Register</h3>
+          <p class="text-xs text-slate-400">Create your team profile on our portal.</p>
+        </div>
+        <div class="relative">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+            <span class="mono-font text-[var(--neon-cyan)] text-xl font-bold">02</span>
+          </div>
+          <h3 class="font-bold text-white uppercase text-sm mb-2">Form Team</h3>
+          <p class="text-xs text-slate-400">Build your squad of 2-5 members.</p>
+        </div>
+        <div class="relative">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-magenta)] flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(255,0,229,0.4)]">
+            <span class="mono-font text-[var(--neon-magenta)] text-xl font-bold">03</span>
+          </div>
+          <h3 class="font-bold text-white uppercase text-sm mb-2">Build Bot</h3>
+          <p class="text-xs text-slate-400">Prepare your robot for competition specs.</p>
+        </div>
+        <div class="relative">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-[#050B1A] border-2 border-[var(--neon-cyan)] flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,240,255,0.4)] animate-pulse">
+            <span class="mono-font text-[var(--neon-cyan)] text-xl font-bold">04</span>
+          </div>
+          <h3 class="font-bold text-white uppercase text-sm mb-2">Compete</h3>
+          <p class="text-xs text-slate-400">Enter the arena and claim victory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIZES -->
+  <section class="py-20 px-6 bg-[#050B1A]">
+    <div class="max-w-[1400px] mx-auto">
+      <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight text-center">Prizes &
+        Recognition</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div
+          class="dark-glass p-10 rounded-sm text-center border-t-4 border-t-yellow-400 group hover:shadow-[0_0_30px_rgba(250,204,21,0.2)]">
+          <span class="material-symbols-outlined text-yellow-400 text-5xl mb-4 block"
+            style="text-shadow: 0 0 15px rgba(250,204,21,0.5)">emoji_events</span>
+          <h3 class="text-xl font-bold text-yellow-400 uppercase tracking-wider mb-2">Gold</h3>
+          <p class="text-3xl mono-font font-bold text-white mb-2">$10,000</p>
+          <p class="text-xs text-slate-400">+ Trophy + Global Recognition</p>
+        </div>
+        <div
+          class="dark-glass p-10 rounded-sm text-center border-t-4 border-t-slate-300 group hover:shadow-[0_0_30px_rgba(203,213,225,0.2)]">
+          <span class="material-symbols-outlined text-slate-300 text-5xl mb-4 block">emoji_events</span>
+          <h3 class="text-xl font-bold text-slate-300 uppercase tracking-wider mb-2">Silver</h3>
+          <p class="text-3xl mono-font font-bold text-white mb-2">$7,500</p>
+          <p class="text-xs text-slate-400">+ Medal + Certificate</p>
+        </div>
+        <div
+          class="dark-glass p-10 rounded-sm text-center border-t-4 border-t-amber-600 group hover:shadow-[0_0_30px_rgba(217,119,6,0.2)]">
+          <span class="material-symbols-outlined text-amber-600 text-5xl mb-4 block">emoji_events</span>
+          <h3 class="text-xl font-bold text-amber-600 uppercase tracking-wider mb-2">Bronze</h3>
+          <p class="text-3xl mono-font font-bold text-white mb-2">$3,500</p>
+          <p class="text-xs text-slate-400">+ Medal + Certificate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING COMPETITION -->
+  <section class="py-20 px-6 bg-[#020617] border-y border-[var(--neon-magenta)]/30 relative overflow-hidden">
+    <div class="absolute inset-0 cyber-grid opacity-10"></div>
+    <div class="max-w-[1400px] mx-auto relative z-10">
+      <div class="flex items-center gap-4 mb-12">
+        <span
+          class="material-symbols-outlined text-[var(--neon-magenta)] text-3xl animate-pulse">notification_important</span>
+        <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight neon-text-magenta">Upcoming Competition
+        </h2>
+        <div class="h-px flex-grow bg-gradient-to-r from-[var(--neon-magenta)]/50 to-transparent"></div>
+      </div>
+
+      <div
+        class="dark-glass rounded-sm overflow-hidden border border-[var(--neon-magenta)]/40 hover:border-[var(--neon-magenta)] transition-all">
+        <div class="grid md:grid-cols-2 gap-0">
+          <!-- Event Visual -->
+          <div class="relative h-[400px] overflow-hidden">
+            <img class="absolute inset-0 w-full h-full object-cover grayscale brightness-50"
+              src="assets/images/products/robot-car.png" />
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#020617]"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
+            <div class="absolute inset-0"
+              style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,240,255,0.03) 2px, rgba(0,240,255,0.03) 4px);">
+            </div>
+          </div>
+
+          <!-- Event Details -->
+          <div class="p-10 lg:p-14 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-6">
+              <span
+                class="inline-block px-3 py-1 bg-[var(--neon-magenta)] text-white text-[10px] font-bold tracking-widest uppercase shadow-[0_0_15px_var(--neon-magenta)]">Live
+                Event</span>
+              <span
+                class="inline-block px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold tracking-widest uppercase">Registration
+                Open</span>
+            </div>
+
+            <h3 class="text-3xl lg:text-4xl font-extrabold text-white uppercase tracking-tighter italic mb-4">
+              World Robotics<br />Championship 2026
+            </h3>
+
+            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+              The ultimate global showdown. Teams from across the world compete in drone racing, robot car challenges,
+              and sumo combat. Build your bot, sharpen your code, and claim the title.
+            </p>
+
+            <!-- Event Meta -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-[var(--neon-cyan)] text-lg">calendar_month</span>
+                <div>
+                  <p class="text-white font-bold uppercase text-xs tracking-wider">Date</p>
+                  <p class="text-slate-400 mono-font text-xs">SEP 15 — 17, 2026</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-[var(--neon-cyan)] text-lg">public</span>
+                <div>
+                  <p class="text-white font-bold uppercase text-xs tracking-wider">Location</p>
+                  <p class="text-slate-400 mono-font text-xs">Global // Online + Regional Hubs</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-[var(--neon-magenta)] text-lg">groups</span>
+                <div>
+                  <p class="text-white font-bold uppercase text-xs tracking-wider">Teams</p>
+                  <p class="text-slate-400 mono-font text-xs">256 Slots Available</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-[var(--neon-magenta)] text-lg">payments</span>
+                <div>
+                  <p class="text-white font-bold uppercase text-xs tracking-wider">Prize Pool</p>
+                  <p class="text-slate-400 mono-font text-xs">$50,000+ in Prizes</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span
+                class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] bg-[var(--neon-cyan)]/5">Drone
+                Racing</span>
+              <span
+                class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-[var(--neon-magenta)]/30 text-[var(--neon-magenta)] bg-[var(--neon-magenta)]/5">Robot
+                Car</span>
+              <span
+                class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-purple-500/30 text-purple-400 bg-purple-500/5">Sumo
+                Combat</span>
+              <span
+                class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-yellow-500/30 text-yellow-400 bg-yellow-500/5">Soccer
+                Bot</span>
+            </div>
+
+            <a href="contact.html"
+              class="cta-cyber text-white px-10 py-4 rounded-sm font-bold text-sm uppercase tracking-widest inline-block text-center w-full md:w-auto">
+              Register Your Team
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRATION CTA -->
+  <section class="py-20 px-6">
+    <div class="max-w-[1400px] mx-auto relative">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-[var(--neon-cyan)] via-purple-600 to-[var(--neon-magenta)] rounded-sm blur-xl opacity-20">
+      </div>
+      <div
+        class="relative bg-gradient-to-r from-[var(--neon-cyan)] via-purple-600 to-[var(--neon-magenta)] p-1 rounded-sm">
+        <div class="bg-[#050B1A] p-16 text-center relative overflow-hidden rounded-sm">
+          <div class="absolute inset-0 circuit-overlay"></div>
+          <div class="relative z-10">
+            <h2 class="text-4xl font-extrabold text-white mb-6 uppercase tracking-tight">Register Your Team</h2>
+            <p class="text-slate-400 mb-10 max-w-xl mx-auto">Secure your spot in the next CodingInABox competition
+              season. Limited slots available per category.</p>
+            <a href="contact.html"
+              class="cta-cyber text-white px-12 py-5 rounded-sm font-bold text-sm uppercase tracking-widest inline-block">Register
+              Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#020611] pt-24 pb-12 relative overflow-hidden">
+    <div class="absolute bottom-0 left-0 w-full h-[300px] cyber-grid opacity-10 pointer-events-none"></div>
+    <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 relative z-10">
+      <div><a href="index.html" class="flex items-center gap-2 mb-8">
+          <img src="logo.svg" alt="CodingInABox" class="h-10 w-auto" /></a>
+        <p class="text-slate-500 text-xs mono-font uppercase leading-relaxed tracking-tighter">> Leading STEM ecosystem.
+          Inspiring creators since 2026.</p>
+      </div>
+      <div>
+        <h4
+          class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+          Archive</h4>
+        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="about.html">About</a></li>
+          <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="products.html">Kits</a></li>
+          <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="competitions.html">Competitions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4
+          class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+          Nodes</h4>
+        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="courses.html">Courses</a></li>
+          <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="sponsorship.html">Sponsors</a></li>
+          <li><a class="hover:text-[var(--neon-cyan)] transition-colors" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4
+          class="text-white font-bold mb-6 uppercase text-sm tracking-widest border-b border-[var(--neon-cyan)] w-fit pb-1">
+          Protocols</h4>
+        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <li><a class="hover:text-[var(--neon-cyan)]" href="#">Privacy</a></li>
+          <li><a class="hover:text-[var(--neon-cyan)]" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="max-w-[1400px] mx-auto px-6 pt-12 border-t border-[var(--neon-cyan)]/20 text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em] relative z-10">
+      <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

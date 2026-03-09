@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#iconGrad)"/>
+  <!-- Drone body -->
+  <rect x="26" y="28" width="12" height="8" rx="2" fill="white"/>
+  <!-- Arms -->
+  <line x1="20" y1="24" x2="28" y2="30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="44" y1="24" x2="36" y2="30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="20" y1="40" x2="28" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="44" y1="40" x2="36" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Propellers -->
+  <ellipse cx="18" cy="22" rx="8" ry="3" fill="white" opacity="0.7" transform="rotate(-20,18,22)"/>
+  <ellipse cx="46" cy="22" rx="8" ry="3" fill="white" opacity="0.7" transform="rotate(20,46,22)"/>
+  <ellipse cx="18" cy="42" rx="8" ry="3" fill="white" opacity="0.7" transform="rotate(20,18,42)"/>
+  <ellipse cx="46" cy="42" rx="8" ry="3" fill="white" opacity="0.7" transform="rotate(-20,46,42)"/>
+  <!-- Motor dots -->
+  <circle cx="18" cy="22" r="2" fill="white"/>
+  <circle cx="46" cy="22" r="2" fill="white"/>
+  <circle cx="18" cy="42" r="2" fill="white"/>
+  <circle cx="46" cy="42" r="2" fill="white"/>
+</svg>

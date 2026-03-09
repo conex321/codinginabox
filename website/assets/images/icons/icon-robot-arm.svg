@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#10B981"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#armGrad)"/>
+  <!-- Base -->
+  <rect x="20" y="44" width="24" height="6" rx="2" fill="white"/>
+  <!-- Lower arm -->
+  <rect x="30" y="30" width="6" height="16" rx="2" fill="white" transform="rotate(-15,33,38)"/>
+  <!-- Upper arm -->
+  <rect x="28" y="16" width="6" height="18" rx="2" fill="white" transform="rotate(20,31,25)"/>
+  <!-- Joint circles -->
+  <circle cx="33" cy="30" r="3" fill="white" stroke="url(#armGrad)" stroke-width="1.5"/>
+  <circle cx="30" cy="18" r="3" fill="white" stroke="url(#armGrad)" stroke-width="1.5"/>
+  <!-- Gripper -->
+  <line x1="26" y1="14" x2="30" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="22" y1="16" x2="28" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
