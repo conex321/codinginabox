@@ -333,6 +333,21 @@
 
   /* ── Schools section CTA reduction ── */
   .lg\:p-20 { padding: 2rem !important; }
+
+  /* ── Courses Page: Module Cards ── */
+  .module-card .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .module-card .h-64 { height: 200px !important; }
+
+  /* ── Courses Page: Pricing Tiers ── */
+  .tier-popular { margin-top: 1rem; }
+
+  /* ── Courses Page: Enrollment checkboxes ── */
+  #enrollment-form .grid.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Tablet-ish overrides (between 768-1024) */

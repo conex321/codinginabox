@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Courses | CodingInABox — Build. Code. Compete.</title>
+    <title>AI & Coding Courses | CodingInABox — Self-Paced Learning Modules</title>
     <meta name="description"
-        content="Learn robotics, coding, and engineering with CodingInABox online and offline courses. From beginner to advanced.">
+        content="Master robotics, AI, and coding with 7 self-paced learning modules. Instructional videos, hands-on projects, and certifications. $50/month per course.">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
@@ -34,7 +34,16 @@
 .nav-dropdown:hover .nav-dropdown-menu{display:block}
 .nav-dropdown-menu a{display:block;padding:8px 20px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#94a3b8;transition:all 0.2s}
 .nav-dropdown-menu a:hover{color:var(--neon-cyan);background:rgba(0,240,255,0.05);padding-left:24px}
-</style>
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--neon-cyan)!important;box-shadow:0 0 15px rgba(0,240,255,0.15)!important}
+.module-card{transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.module-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,240,255,0.15)}
+.syllabus-item{position:relative;padding-left:28px}
+.syllabus-item::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:rgba(0,240,255,0.2)}
+.syllabus-item::after{content:'';position:absolute;left:4px;top:8px;width:10px;height:10px;border-radius:50%;border:2px solid var(--neon-cyan);background:#050B1A}
+.price-glow{animation:priceGlow 2s ease-in-out infinite alternate}
+@keyframes priceGlow{0%{text-shadow:0 0 10px rgba(0,240,255,0.5)}100%{text-shadow:0 0 25px rgba(0,240,255,0.8),0 0 50px rgba(0,240,255,0.3)}}
+.tier-popular{border:2px solid var(--neon-cyan);box-shadow:0 0 40px rgba(0,240,255,0.12)}
+    </style>
     <link rel="stylesheet" href="mobile.css" />
     <script src="mobile-nav.js" defer></script>
 </head>
@@ -69,9 +78,9 @@
                 <a class="text-sm font-medium text-slate-300 hover:text-[var(--neon-cyan)] transition-colors"
                     href="contact.html">Contact</a>
             </div>
-            <a href="contact.html"
-                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Get
-                Started</a>
+            <a href="#enroll"
+                class="cta-cyber text-white px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-wider">Enroll
+                Now</a>
         </div>
     </nav>
 
@@ -80,181 +89,590 @@
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050B1A]"></div>
         <div class="max-w-[1400px] mx-auto px-6 text-center relative z-10 py-24">
             <div
-                class="inline-block px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
-                10+ Active Modules // Updated Q1 2026</div>
+                class="inline-flex items-center gap-2 px-3 py-1 bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                <span class="material-symbols-outlined text-sm">school</span>
+                7 Self-Paced Modules // $50/mo Per Course
+            </div>
             <h1 class="text-5xl lg:text-8xl font-extrabold text-white leading-none mb-6 neon-text-cyan">
-                Knowledge<br /><span class="neon-text-magenta">Modules</span></h1>
-            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">From zero-code novice to autonomous
-                systems engineer. Professional-grade training paths for every skill level.</p>
+                AI & Coding<br /><span class="neon-text-magenta">Academy</span></h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Master robotics, AI, and
+                programming with hands-on, self-paced learning modules. Instructional videos, coding labs,
+                and real-world projects — learn at your own speed.</p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="#modules"
+                    class="cta-cyber text-white px-10 py-4 rounded-sm font-bold text-lg uppercase tracking-widest">Browse
+                    Modules</a>
+                <a href="#pricing"
+                    class="border border-[var(--neon-cyan)] text-[var(--neon-cyan)] px-10 py-4 rounded-sm font-bold text-lg hover:bg-[var(--neon-cyan)]/10 transition-colors uppercase tracking-widest">View
+                    Pricing</a>
+            </div>
         </div>
     </section>
 
-    <!-- FORMATS -->
+    <!-- HOW IT WORKS -->
     <section class="py-16 px-6 bg-[#020617] border-y border-[var(--neon-cyan)]/20">
-        <div class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8">
-            <div class="dark-glass p-8 rounded-sm text-center"><span
-                    class="material-symbols-outlined text-[var(--neon-cyan)] text-4xl mb-4 block">laptop</span>
-                <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Online</h3>
-                <p class="text-sm text-slate-400">Self-paced video modules with interactive coding labs. Learn anywhere,
-                    anytime.</p>
-            </div>
-            <div class="dark-glass p-8 rounded-sm text-center"><span
-                    class="material-symbols-outlined text-[var(--neon-magenta)] text-4xl mb-4 block">school</span>
-                <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">In-Person</h3>
-                <p class="text-sm text-slate-400">Hands-on workshops at partner schools and community centers near you.
-                </p>
-            </div>
-            <div class="dark-glass p-8 rounded-sm text-center"><span
-                    class="material-symbols-outlined text-purple-400 text-4xl mb-4 block">hub</span>
-                <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Hybrid</h3>
-                <p class="text-sm text-slate-400">Combine online theory with in-person build sessions. Best of both
-                    worlds.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- COURSE CATALOG -->
-    <section class="py-20 px-6 bg-[#050B1A]">
         <div class="max-w-[1400px] mx-auto">
-            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight">Course Catalog
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div
-                    class="dark-glass p-8 rounded-sm border-l-4 border-l-green-400 group hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center justify-between mb-4"><span
-                            class="text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold">Beginner</span><span
-                            class="text-[10px] mono-font text-slate-500">12 hrs</span></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Robotics Foundations</h3>
-                    <p class="text-sm text-slate-400 mb-6">Master electronics basics, soldering, and introductory
-                        Arduino programming.</p>
-                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
-                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+            <h2 class="text-2xl font-extrabold text-white mb-10 text-center uppercase tracking-wider neon-text-cyan">How
+                Self-Paced Learning Works</h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="dark-glass p-6 rounded-sm text-center">
+                    <div
+                        class="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--neon-cyan)]/10 border border-[var(--neon-cyan)]/40 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[var(--neon-cyan)] text-2xl">shopping_cart</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">01. Choose Your Module</h3>
+                    <p class="text-xs text-slate-400">Pick any of our 7 specialized courses — each paired with a
+                        physical kit.</p>
                 </div>
-                <div
-                    class="dark-glass p-8 rounded-sm border-l-4 border-l-green-400 group hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center justify-between mb-4"><span
-                            class="text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold">Beginner</span><span
-                            class="text-[10px] mono-font text-slate-500">8 hrs</span></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Python for Hardware</h3>
-                    <p class="text-sm text-slate-400 mb-6">Learn Python basics with direct application to sensor control
-                        and motor logic.</p>
-                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
-                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                <div class="dark-glass p-6 rounded-sm text-center">
+                    <div
+                        class="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--neon-magenta)]/10 border border-[var(--neon-magenta)]/40 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[var(--neon-magenta)] text-2xl">play_circle</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">02. Watch & Learn</h3>
+                    <p class="text-xs text-slate-400">HD instructional videos with step-by-step coding lessons and
+                        AI training.</p>
                 </div>
-                <div
-                    class="dark-glass p-8 rounded-sm border-l-4 border-l-yellow-400 group hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center justify-between mb-4"><span
-                            class="text-[10px] mono-font text-yellow-400 uppercase tracking-widest font-bold">Intermediate</span><span
-                            class="text-[10px] mono-font text-slate-500">24 hrs</span></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Autonomous Logic</h3>
-                    <p class="text-sm text-slate-400 mb-6">PID control, sensor fusion, and advanced autonomous
-                        navigation algorithms.</p>
-                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
-                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                <div class="dark-glass p-6 rounded-sm text-center">
+                    <div
+                        class="w-14 h-14 mx-auto mb-4 rounded-full bg-purple-500/10 border border-purple-500/40 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-purple-400 text-2xl">build</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">03. Build Projects</h3>
+                    <p class="text-xs text-slate-400">Apply what you learn with hands-on kit projects and coding
+                        challenges.</p>
                 </div>
-                <div
-                    class="dark-glass p-8 rounded-sm border-l-4 border-l-yellow-400 group hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center justify-between mb-4"><span
-                            class="text-[10px] mono-font text-yellow-400 uppercase tracking-widest font-bold">Intermediate</span><span
-                            class="text-[10px] mono-font text-slate-500">16 hrs</span></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Drone Flight Systems</h3>
-                    <p class="text-sm text-slate-400 mb-6">Understand quadcopter physics, PID tuning, and autonomous
-                        waypoint navigation.</p>
-                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
-                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
-                </div>
-                <div
-                    class="dark-glass p-8 rounded-sm border-l-4 border-l-red-400 group hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center justify-between mb-4"><span
-                            class="text-[10px] mono-font text-red-400 uppercase tracking-widest font-bold">Advanced</span><span
-                            class="text-[10px] mono-font text-slate-500">40 hrs</span></div>
-                    <h3 class="text-xl font-bold text-white mb-3">AI Vision & Systems</h3>
-                    <p class="text-sm text-slate-400 mb-6">Integrate computer vision, object detection, and neural
-                        networks into your robot.</p>
-                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
-                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
-                </div>
-                <div
-                    class="dark-glass p-8 rounded-sm border-l-4 border-l-red-400 group hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center justify-between mb-4"><span
-                            class="text-[10px] mono-font text-red-400 uppercase tracking-widest font-bold">Advanced</span><span
-                            class="text-[10px] mono-font text-slate-500">32 hrs</span></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Competition Mastery</h3>
-                    <p class="text-sm text-slate-400 mb-6">Tournament strategy, speed optimization, and advanced
-                        debugging for competitive robotics.</p>
-                    <div class="flex items-center gap-2 text-[var(--neon-cyan)] text-xs font-bold uppercase"><span
-                            class="material-symbols-outlined text-sm">play_circle</span>Start Course</div>
+                <div class="dark-glass p-6 rounded-sm text-center">
+                    <div
+                        class="w-14 h-14 mx-auto mb-4 rounded-full bg-green-500/10 border border-green-500/40 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-green-400 text-2xl">verified</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">04. Get Certified</h3>
+                    <p class="text-xs text-slate-400">Earn a completion certificate and join our competition-ready
+                        community.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING -->
-    <section class="py-20 px-6 bg-[#020617]">
-        <div class="max-w-[1200px] mx-auto">
-            <h2 class="text-3xl font-extrabold text-white mb-12 neon-text-cyan uppercase tracking-tight text-center">
-                Access Tiers</h2>
+    <!-- LEARNING MODULES -->
+    <section id="modules" class="py-20 px-6 bg-[#050B1A]">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">Self-Paced
+                    Learning Modules</h2>
+                <p class="text-slate-400 mono-font text-sm">> 7 modules // Each paired with hands-on kit // AI &
+                    Coding curriculum</p>
+            </div>
+
+            <!-- Module 1: Robot Car -->
+            <div class="module-card dark-glass rounded-sm overflow-hidden mb-8">
+                <div class="grid lg:grid-cols-2">
+                    <div class="h-64 lg:h-auto overflow-hidden relative">
+                        <img class="w-full h-full object-cover" src="assets/images/courses/robot-car.png"
+                            alt="Autonomous Navigation Module" />
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#050B1A]/80 hidden lg:block">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent lg:hidden"></div>
+                    </div>
+                    <div class="p-8 lg:p-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold bg-green-400/10 px-2 py-1 border border-green-400/30">Beginner</span>
+                            <span class="text-[10px] mono-font text-slate-500">16 hrs • 6 Units</span>
+                            <span class="text-[10px] mono-font text-[var(--neon-cyan)] font-bold">$50<span
+                                    class="text-slate-500">/mo</span></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2 uppercase tracking-wider">Autonomous Navigation
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-4 mono-font uppercase tracking-tight">Paired with: Robot Car
+                            V4 Kit</p>
+                        <p class="text-sm text-slate-400 mb-6 leading-relaxed">Master Python programming, PID control
+                            algorithms, and sensor fusion to build a fully autonomous 4WD robot car. Learn to navigate
+                            obstacle courses and compete.</p>
+                        <div class="space-y-3 mb-6">
+                            <div class="syllabus-item text-xs text-slate-300"><span class="font-bold text-white">Unit
+                                    1:</span> Python Fundamentals & Arduino Setup</div>
+                            <div class="syllabus-item text-xs text-slate-300"><span class="font-bold text-white">Unit
+                                    2:</span> Motor Control & PWM Signals</div>
+                            <div class="syllabus-item text-xs text-slate-300"><span class="font-bold text-white">Unit
+                                    3:</span> Ultrasonic & IR Sensor Integration</div>
+                            <div class="syllabus-item text-xs text-slate-300"><span class="font-bold text-white">Unit
+                                    4:</span> PID Control Algorithms</div>
+                            <div class="syllabus-item text-xs text-slate-300"><span class="font-bold text-white">Unit
+                                    5:</span> Autonomous Pathfinding Logic</div>
+                            <div class="syllabus-item text-xs text-slate-300"><span class="font-bold text-white">Unit
+                                    6:</span> Competition Prep & Speed Optimization</div>
+                        </div>
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>24
+                                Videos</span>
+                            <span
+                                class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>12
+                                Coding Labs</span>
+                            <span
+                                class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-green-400">quiz</span>6 Quizzes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2: Defense Systems -->
+            <div class="module-card dark-glass rounded-sm overflow-hidden mb-8">
+                <div class="grid lg:grid-cols-2">
+                    <div class="h-64 lg:h-auto overflow-hidden relative order-last lg:order-first">
+                        <div class="p-8 lg:p-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="text-[10px] mono-font text-yellow-400 uppercase tracking-widest font-bold bg-yellow-400/10 px-2 py-1 border border-yellow-400/30">Intermediate</span>
+                                <span class="text-[10px] mono-font text-slate-500">14 hrs • 5 Units</span>
+                                <span class="text-[10px] mono-font text-[var(--neon-cyan)] font-bold">$50<span
+                                        class="text-slate-500">/mo</span></span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2 uppercase tracking-wider">Defense Systems &
+                                Targeting</h3>
+                            <p class="text-xs text-slate-500 mb-4 mono-font uppercase tracking-tight">Paired with:
+                                Anti-Aircraft Gun Kit</p>
+                            <p class="text-sm text-slate-400 mb-6 leading-relaxed">Learn servo motor programming,
+                                real-time tracking algorithms, and automated targeting systems. Build an AI-powered
+                                turret
+                                that tracks and engages targets.</p>
+                            <div class="space-y-3 mb-6">
+                                <div class="syllabus-item text-xs text-slate-300"><span
+                                        class="font-bold text-white">Unit 1:</span> Servo Motor Control & Calibration
+                                </div>
+                                <div class="syllabus-item text-xs text-slate-300"><span
+                                        class="font-bold text-white">Unit 2:</span> Coordinate Systems & Angle
+                                    Calculations</div>
+                                <div class="syllabus-item text-xs text-slate-300"><span
+                                        class="font-bold text-white">Unit 3:</span> Object Tracking Algorithms</div>
+                                <div class="syllabus-item text-xs text-slate-300"><span
+                                        class="font-bold text-white">Unit 4:</span> Real-Time Targeting Systems</div>
+                                <div class="syllabus-item text-xs text-slate-300"><span
+                                        class="font-bold text-white">Unit 5:</span> AI-Enhanced Prediction Models</div>
+                            </div>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <span
+                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>20
+                                    Videos</span>
+                                <span
+                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>10
+                                    Coding Labs</span>
+                                <span
+                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-xs text-green-400">quiz</span>5
+                                    Quizzes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-64 lg:h-auto overflow-hidden relative">
+                        <img class="w-full h-full object-cover" src="assets/images/courses/defense-systems.png"
+                            alt="Defense Systems Module" />
+                        <div class="absolute inset-0 bg-gradient-to-l from-transparent to-[#050B1A]/80 hidden lg:block">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent lg:hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remaining Modules: Compact Card Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                <!-- Module 3: Laser Optics -->
+                <div class="module-card dark-glass rounded-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden relative">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            src="assets/images/courses/laser-optics.png" alt="Precision Optics Module" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent opacity-60"></div>
+                        <span
+                            class="absolute top-3 left-3 text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold bg-[#050B1A]/80 px-2 py-1 border border-green-400/30">Beginner</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-white uppercase tracking-wider">Precision Optics & IR</h3>
+                            <span class="text-[var(--neon-cyan)] mono-font font-bold text-sm">$50<span
+                                    class="text-slate-500 text-xs">/mo</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3 mono-font uppercase tracking-tight">Laser Shooting Target
+                            Kit
+                            • 12 hrs • 5 Units</p>
+                        <p class="text-sm text-slate-400 mb-4">IR sensor arrays, gamification logic, scoring systems,
+                            and
+                            interactive target programming.</p>
+                        <div
+                            class="flex items-center gap-3 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>18
+                                Videos</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>8
+                                Labs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4: IoT Systems -->
+                <div class="module-card dark-glass rounded-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden relative">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            src="assets/images/courses/iot-systems.png" alt="IoT Systems Module" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent opacity-60"></div>
+                        <span
+                            class="absolute top-3 left-3 text-[10px] mono-font text-yellow-400 uppercase tracking-widest font-bold bg-[#050B1A]/80 px-2 py-1 border border-yellow-400/30">Intermediate</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-white uppercase tracking-wider">IoT & Smart Systems</h3>
+                            <span class="text-[var(--neon-cyan)] mono-font font-bold text-sm">$50<span
+                                    class="text-slate-500 text-xs">/mo</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3 mono-font uppercase tracking-tight">Smart Water Dispenser
+                            Kit
+                            • 14 hrs • 5 Units</p>
+                        <p class="text-sm text-slate-400 mb-4">IoT protocols, WiFi connectivity, automated dispensing,
+                            and
+                            cloud data monitoring systems.</p>
+                        <div
+                            class="flex items-center gap-3 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>20
+                                Videos</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>10
+                                Labs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 5: Solar Energy -->
+                <div class="module-card dark-glass rounded-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden relative">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            src="assets/images/courses/solar-energy.png" alt="Solar Energy Module" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent opacity-60"></div>
+                        <span
+                            class="absolute top-3 left-3 text-[10px] mono-font text-green-400 uppercase tracking-widest font-bold bg-[#050B1A]/80 px-2 py-1 border border-green-400/30">Beginner</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-white uppercase tracking-wider">Solar & Light Tracking
+                            </h3>
+                            <span class="text-[var(--neon-cyan)] mono-font font-bold text-sm">$50<span
+                                    class="text-slate-500 text-xs">/mo</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3 mono-font uppercase tracking-tight">Solar Light Tracker
+                            Kit •
+                            12 hrs • 4 Units</p>
+                        <p class="text-sm text-slate-400 mb-4">Solar cell technology, LDR sensors, optimization
+                            algorithms,
+                            and renewable energy concepts.</p>
+                        <div
+                            class="flex items-center gap-3 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>16
+                                Videos</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>6
+                                Labs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 6: Robot Arm -->
+                <div class="module-card dark-glass rounded-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden relative">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            src="assets/images/courses/robot-arm.png" alt="Industrial Robotics Module" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent opacity-60"></div>
+                        <span
+                            class="absolute top-3 left-3 text-[10px] mono-font text-red-400 uppercase tracking-widest font-bold bg-[#050B1A]/80 px-2 py-1 border border-red-400/30">Advanced</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-white uppercase tracking-wider">Industrial Robotics</h3>
+                            <span class="text-[var(--neon-cyan)] mono-font font-bold text-sm">$50<span
+                                    class="text-slate-500 text-xs">/mo</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3 mono-font uppercase tracking-tight">Titan Arm 6-Axis Kit •
+                            20 hrs • 6 Units</p>
+                        <p class="text-sm text-slate-400 mb-4">Inverse kinematics, 6-DOF manipulation, precision
+                            control,
+                            and industrial automation fundamentals.</p>
+                        <div
+                            class="flex items-center gap-3 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>30
+                                Videos</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>15
+                                Labs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 7: Drone AI -->
+                <div
+                    class="module-card dark-glass rounded-sm overflow-hidden md:col-span-2 lg:col-span-2 border-2 border-[var(--neon-magenta)]/30">
+                    <div class="grid md:grid-cols-2">
+                        <div class="h-48 md:h-auto overflow-hidden relative">
+                            <img class="w-full h-full object-cover" src="assets/images/courses/drone-ai.png"
+                                alt="Aerial AI Module" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent to-[#050B1A]/80 hidden md:block">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#050B1A] to-transparent md:hidden">
+                            </div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="text-[10px] mono-font text-red-400 uppercase tracking-widest font-bold bg-red-400/10 px-2 py-1 border border-red-400/30">Advanced</span>
+                                <span
+                                    class="text-[10px] mono-font text-[var(--neon-magenta)] uppercase tracking-widest font-bold bg-[var(--neon-magenta)]/10 px-2 py-1 border border-[var(--neon-magenta)]/30">Featured</span>
+                                <span class="text-[10px] mono-font text-slate-500">24 hrs</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2 uppercase tracking-wider">Aerial Systems & AI
+                                Vision</h3>
+                            <p class="text-xs text-slate-500 mb-4 mono-font uppercase tracking-tight">Mini Drone X-2 Kit
+                                •
+                                7 Units</p>
+                            <p class="text-sm text-slate-400 mb-4 leading-relaxed">The ultimate AI course — master drone
+                                flight control, computer vision with OpenCV, neural network object detection, and
+                                autonomous
+                                aerial navigation.</p>
+                            <div class="flex items-center gap-3 mb-4 flex-wrap">
+                                <span
+                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-xs text-[var(--neon-cyan)]">videocam</span>36
+                                    Videos</span>
+                                <span
+                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-xs text-[var(--neon-magenta)]">code</span>18
+                                    Labs</span>
+                                <span
+                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-500 flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-xs text-green-400">quiz</span>7
+                                    Quizzes</span>
+                            </div>
+                            <span class="text-[var(--neon-cyan)] mono-font font-bold text-lg price-glow">$50<span
+                                    class="text-slate-500 text-sm">/mo</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBSCRIPTION PRICING -->
+    <section id="pricing" class="py-20 px-6 bg-[#020617] relative overflow-hidden">
+        <div class="absolute inset-0 circuit-overlay"></div>
+        <div class="max-w-[1200px] mx-auto relative z-10">
+            <div class="text-center mb-14">
+                <h2 class="text-4xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">Subscription
+                    Plans</h2>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto">Choose from individual courses or bundle for
+                    savings. All plans include HD video lessons, coding labs, quizzes, and a completion certificate.</p>
+            </div>
             <div class="grid md:grid-cols-3 gap-8">
+                <!-- Single Course -->
                 <div class="dark-glass p-10 rounded-sm text-center">
-                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Free Tier</h3>
-                    <p class="text-4xl mono-font font-bold text-[var(--neon-cyan)] neon-text-cyan mb-4">R0</p>
-                    <p class="text-xs text-slate-400 mb-8">Access to 3 beginner modules</p>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Single Course</h3>
+                    <p class="text-5xl mono-font font-bold text-[var(--neon-cyan)] neon-text-cyan mb-1">$50</p>
+                    <p class="text-xs text-slate-500 mb-6 mono-font">/month per course</p>
+                    <p class="text-xs text-slate-400 mb-8">Pick any one module and learn at your own pace.</p>
                     <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left">
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>3 Beginner courses
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>1 course of your
+                            choice</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>HD video lessons
                         </li>
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>Community forum
-                        </li>
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Coding labs &
+                            quizzes</li>
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-slate-600 text-sm">close</span>Certificate</li>
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Completion
+                            certificate</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-slate-600 text-sm">close</span>Community forum
+                        </li>
                     </ul>
-                    <button
-                        class="w-full border border-[var(--neon-cyan)] text-[var(--neon-cyan)] py-3 font-bold uppercase tracking-widest text-xs hover:bg-[var(--neon-cyan)] hover:text-[#050B1A] transition-all">Get
-                        Started</button>
+                    <a href="#enroll"
+                        class="w-full block border border-[var(--neon-cyan)] text-[var(--neon-cyan)] py-3 font-bold uppercase tracking-widest text-xs hover:bg-[var(--neon-cyan)] hover:text-[#050B1A] transition-all text-center">Select
+                        Plan</a>
                 </div>
-                <div
-                    class="dark-glass p-10 rounded-sm text-center border-2 border-[var(--neon-cyan)] shadow-[0_0_30px_rgba(0,240,255,0.15)] relative">
+                <!-- 3 Course Bundle -->
+                <div class="tier-popular dark-glass p-10 rounded-sm text-center relative">
                     <div
                         class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--neon-cyan)] text-[#050B1A] text-[10px] font-bold uppercase tracking-widest px-4 py-1">
-                        Most Popular</div>
-                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Pro Tier</h3>
-                    <p class="text-4xl mono-font font-bold text-[var(--neon-cyan)] neon-text-cyan mb-4">R499<span
-                            class="text-lg">/mo</span></p>
-                    <p class="text-xs text-slate-400 mb-8">Full access to all courses</p>
+                        Best Value</div>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">3-Course Bundle</h3>
+                    <p class="text-5xl mono-font font-bold text-[var(--neon-cyan)] price-glow mb-1">$120</p>
+                    <p class="text-xs text-slate-500 mb-1 mono-font">/month for 3 courses</p>
+                    <p class="text-xs text-green-400 font-bold mb-6">Save 20% vs. individual pricing</p>
+                    <p class="text-xs text-slate-400 mb-8">Choose any 3 modules for a discounted monthly rate.</p>
                     <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left">
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>All 10+ courses
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>3 courses of your
+                            choice</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>HD video lessons
                         </li>
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>Certificates</li>
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>All labs, quizzes
+                            & certs</li>
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>1-on-1 mentoring
-                        </li>
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Community forum
+                            access</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Priority email
+                            support</li>
                     </ul>
-                    <button
-                        class="w-full cta-cyber text-white py-3 font-bold uppercase tracking-widest text-xs">Subscribe</button>
+                    <a href="#enroll"
+                        class="w-full block cta-cyber text-white py-3 font-bold uppercase tracking-widest text-xs text-center">Select
+                        Plan</a>
                 </div>
+                <!-- All Access -->
                 <div class="dark-glass p-10 rounded-sm text-center">
-                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">School Tier</h3>
-                    <p class="text-4xl mono-font font-bold text-[var(--neon-magenta)] neon-text-magenta mb-4">Custom</p>
-                    <p class="text-xs text-slate-400 mb-8">Bulk licensing for institutions</p>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-wider mb-2">All-Access Pass</h3>
+                    <p class="text-5xl mono-font font-bold text-[var(--neon-magenta)] neon-text-magenta mb-1">$199</p>
+                    <p class="text-xs text-slate-500 mb-1 mono-font">/month unlimited</p>
+                    <p class="text-xs text-[var(--neon-magenta)] font-bold mb-6">All 7 modules + exclusive content</p>
+                    <p class="text-xs text-slate-400 mb-8">Unlimited access to every module, plus exclusive resources.
+                    </p>
                     <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left">
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>All courses + admin
-                            panel</li>
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>All 7 modules
+                            included</li>
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>Teacher training
-                        </li>
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Exclusive bonus
+                            content</li>
                         <li class="flex items-center gap-2"><span
-                                class="material-symbols-outlined text-green-400 text-sm">check</span>Priority support
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>1-on-1 mentor
+                            sessions</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>Competition
+                            coaching</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-green-400 text-sm">check</span>All certificates
                         </li>
                     </ul>
-                    <a href="contact.html"
-                        class="w-full block border border-[var(--neon-magenta)] text-[var(--neon-magenta)] py-3 font-bold uppercase tracking-widest text-xs hover:bg-[var(--neon-magenta)] hover:text-white transition-all text-center">Contact
-                        Sales</a>
+                    <a href="#enroll"
+                        class="w-full block border border-[var(--neon-magenta)] text-[var(--neon-magenta)] py-3 font-bold uppercase tracking-widest text-xs hover:bg-[var(--neon-magenta)] hover:text-white transition-all text-center">Select
+                        Plan</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ENROLLMENT FORM -->
+    <section id="enroll" class="py-20 px-6 bg-[#050B1A] border-t border-[var(--neon-cyan)]/20">
+        <div class="max-w-[800px] mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-white mb-4 neon-text-cyan uppercase tracking-tight">Enroll Now
+                </h2>
+                <p class="text-slate-400 text-sm">Select your courses and subscription tier. Our team will reach out
+                    within 24 hours to set up your learning account.</p>
+            </div>
+            <form id="enrollment-form" class="dark-glass p-10 rounded-sm space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label
+                            class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">First
+                            Name *</label>
+                        <input id="enroll-first-name" type="text" required
+                            class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all"
+                            placeholder="Enter first name">
+                    </div>
+                    <div>
+                        <label
+                            class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Last
+                            Name *</label>
+                        <input id="enroll-last-name" type="text" required
+                            class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all"
+                            placeholder="Enter last name">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Email
+                        *</label>
+                    <input id="enroll-email" type="email" required
+                        class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all"
+                        placeholder="your@email.com">
+                </div>
+                <div>
+                    <label
+                        class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Subscription
+                        Tier *</label>
+                    <select id="enroll-tier" required
+                        class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all">
+                        <option value="">Select a plan...</option>
+                        <option value="single">Single Course — $50/mo</option>
+                        <option value="bundle_3">3-Course Bundle — $120/mo</option>
+                        <option value="all_access">All-Access Pass — $199/mo</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-3 block">Select
+                        Courses</label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors">
+                            <input type="checkbox" name="courses" value="Autonomous Navigation"
+                                class="accent-[#00F0FF]">
+                            Autonomous Navigation
+                        </label>
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors">
+                            <input type="checkbox" name="courses" value="Defense Systems" class="accent-[#00F0FF]">
+                            Defense Systems & Targeting
+                        </label>
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors">
+                            <input type="checkbox" name="courses" value="Precision Optics" class="accent-[#00F0FF]">
+                            Precision Optics & IR
+                        </label>
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors">
+                            <input type="checkbox" name="courses" value="IoT Smart Systems" class="accent-[#00F0FF]">
+                            IoT & Smart Systems
+                        </label>
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors">
+                            <input type="checkbox" name="courses" value="Solar Light Tracking" class="accent-[#00F0FF]">
+                            Solar & Light Tracking
+                        </label>
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors">
+                            <input type="checkbox" name="courses" value="Industrial Robotics" class="accent-[#00F0FF]">
+                            Industrial Robotics
+                        </label>
+                        <label
+                            class="flex items-center gap-3 text-sm text-slate-300 cursor-pointer hover:text-white transition-colors md:col-span-2">
+                            <input type="checkbox" name="courses" value="Aerial AI Vision" class="accent-[#00F0FF]">
+                            Aerial Systems & AI Vision
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label
+                        class="text-xs mono-font text-[var(--neon-cyan)] uppercase tracking-widest mb-2 block">Additional
+                        Notes</label>
+                    <textarea id="enroll-message" rows="3"
+                        class="w-full bg-[#020617] border border-[rgba(0,240,255,0.2)] px-4 py-3 text-white text-sm rounded-sm transition-all resize-none"
+                        placeholder="Any questions or special requirements..."></textarea>
+                </div>
+                <div id="enroll-feedback" class="hidden text-sm text-center py-3 rounded-sm"></div>
+                <button id="enroll-submit" type="submit"
+                    class="cta-cyber text-white w-full py-4 rounded-sm font-bold text-sm uppercase tracking-widest">
+                    Submit Enrollment
+                </button>
+            </form>
         </div>
     </section>
 
@@ -299,9 +717,75 @@
         </div>
         <div
             class="max-w-[1400px] mx-auto px-6 pt-12 border-t border-[var(--neon-cyan)]/20 text-slate-600 text-[10px] uppercase font-bold tracking-[0.2em] relative z-10">
-            <p>© 2026 CodingInABox Terminal. All rights reserved.</p>
+            <p>&copy; 2026 CodingInABox Terminal. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // ── Supabase Form Submission ──
+        const SUPABASE_URL = 'https://iklrqaopyptbgbefxwbp.supabase.co';
+        const SUPABASE_ANON_KEY = ''; // Will be populated once Supabase anon key is set
+
+        document.getElementById('enrollment-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('enroll-submit');
+            const feedback = document.getElementById('enroll-feedback');
+            const firstName = document.getElementById('enroll-first-name').value.trim();
+            const lastName = document.getElementById('enroll-last-name').value.trim();
+            const email = document.getElementById('enroll-email').value.trim();
+            const tier = document.getElementById('enroll-tier').value;
+            const message = document.getElementById('enroll-message').value.trim();
+            const courseCheckboxes = document.querySelectorAll('input[name="courses"]:checked');
+            const selectedCourses = Array.from(courseCheckboxes).map(cb => cb.value);
+
+            if (!firstName || !lastName || !email || !tier) {
+                feedback.className = 'text-sm text-center py-3 rounded-sm bg-red-500/10 border border-red-500/30 text-red-400';
+                feedback.textContent = 'Please fill in all required fields.';
+                feedback.classList.remove('hidden');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Transmitting...';
+
+            try {
+                // Try edge function first
+                const edgeFnUrl = SUPABASE_URL + '/functions/v1/submit-form';
+                const response = await fetch(edgeFnUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        first_name: firstName,
+                        last_name: lastName,
+                        email: email,
+                        subject: 'Course Enrollment — ' + tier,
+                        message: message || null,
+                        signup_type: 'course_enrollment',
+                        selected_courses: selectedCourses.length > 0 ? selectedCourses : null,
+                        subscription_tier: tier
+                    })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    feedback.className = 'text-sm text-center py-3 rounded-sm bg-green-500/10 border border-green-500/30 text-green-400';
+                    feedback.textContent = data.message || 'Enrollment submitted successfully! Check your email.';
+                    feedback.classList.remove('hidden');
+                    e.target.reset();
+                } else {
+                    throw new Error(data.error || 'Submission failed');
+                }
+            } catch (err) {
+                // Fallback: show success message with mailto
+                feedback.className = 'text-sm text-center py-3 rounded-sm bg-yellow-500/10 border border-yellow-500/30 text-yellow-400';
+                feedback.innerHTML = 'Backend is being set up. Please email <a href="mailto:hello@codinginabox.com" class="text-[var(--neon-cyan)] underline">hello@codinginabox.com</a> with your enrollment details.';
+                feedback.classList.remove('hidden');
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Submit Enrollment';
+        });
+    </script>
     <script src="translations.js"></script>
 </body>
 
